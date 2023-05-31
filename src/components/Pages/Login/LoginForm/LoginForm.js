@@ -11,8 +11,8 @@ const LoginForm = () => {
       <Title>Login</Title>
 
       <form>
-        <Input type='text' placeholder='username' name='Usuario'/>
-        <Input type='text' placeholder='password' name='Senha'/>
+        <Input type='text' placeholder='usuário' name='Usuario'/>
+        <Input type='password' placeholder='senha' name='Senha'/>
 
         <FormContainer>
           <BtnVoltar/>
