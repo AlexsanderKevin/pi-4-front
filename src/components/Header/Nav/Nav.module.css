@@ -27,3 +27,8 @@
 }
 
 @keyframes fill-underline { to { width: 100%;}}
+
+.logout {
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+}

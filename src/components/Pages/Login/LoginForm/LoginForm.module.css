@@ -1,0 +1,25 @@
+.form {
+  margin-top: 10rem;
+  width: 25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttonLogin {
+  border: solid 2px var(--color-action);
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+}
+
+.buttonLogin:hover {
+  border-color: var(--color-main);
+}
+
+div:has(.buttonLogin) {
+  justify-content: end;
+}
+
+.errorMessage {
+  color: var(--color-second);
+  font-size: .8rem;
+}

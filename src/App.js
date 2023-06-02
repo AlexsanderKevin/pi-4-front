@@ -8,21 +8,25 @@ import NewEquipment from './components/Pages/NewEquipment/NewEquipment';
 import Login from './components/Pages/Login/Login';
 import NewResponsible from './components/Pages/NewResponsible/NewResponsible';
 import NewMovimentatio from './components/Pages/NewMovimentation/NewMovimentation';
+import { GlobalStorage } from './GlobalContext';
+import ProtectedRoute from './components/Helper/ProtectedRoute';
 
 function App() {
   return (
     <div className="container">
       <BrowserRouter>
-        <Header/>
-        <Routes>
-          <Route path='/teste' element={ <Teste/> } />
-          <Route path='/' element={ <Home/> } />
-          <Route path='/config' element={ <Config/> } />
-          <Route path='/equipamentos/new' element={ <NewEquipment/> } />
-          <Route path='/login' element={ <Login/> } />
-          <Route path='/responsaveis/new' element={ <NewResponsible/> } />
-          <Route path='/movimentacoes/new' element={ <NewMovimentatio/> } />
-        </Routes>
+        <GlobalStorage>
+          <Header/>
+          <Routes>
+            <Route path='/teste' element={ <ProtectedRoute> <Teste/> </ProtectedRoute>} />
+            <Route path='/home' element={ <ProtectedRoute> <Home/> </ProtectedRoute>} />
+            <Route path='/config' element={ <ProtectedRoute> <Config/> </ProtectedRoute>} />
+            <Route path='/equipamentos/new' element={ <ProtectedRoute> <NewEquipment/> </ProtectedRoute>} />
+            <Route path='/' element={ <Login/> } />
+            <Route path='/responsaveis/new' element={ <ProtectedRoute> <NewResponsible/> </ProtectedRoute>} />
+            <Route path='/movimentacoes/new' element={ <NewMovimentatio/> } />
+          </Routes>
+        </GlobalStorage>
       </BrowserRouter>
     </div>
   );
