@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from '../../../Forms/Inputs/Input'
 import BtnVoltar from '../../../Forms/Buttons/BtnVoltar'
-import BtnSalvar from '../../../Forms/Buttons/BtnSalvar'
+import BtnLogar from '../../../Forms/Buttons/BtnLogar'
 import Title from '../../../Title/Title'
 import FormContainer from '../../../Forms/Containers/FormContainer'
 
@@ -16,7 +16,7 @@ const LoginForm = () => {
 
         <FormContainer>
           <BtnVoltar/>
-          <BtnSalvar/>
+          <BtnLogar/>
         </FormContainer>
       </form>
     </div>
