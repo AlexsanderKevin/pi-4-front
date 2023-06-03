@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom"
 const ProtectedRoute = ({children}) => {
   const { loggedUser } = useContext(GlobalContext)
 
-  return loggedUser ? children : <Navigate to="/" />
+  return loggedUser ? children : <Navigate to="/login" />
 }
 
 export default ProtectedRoute
