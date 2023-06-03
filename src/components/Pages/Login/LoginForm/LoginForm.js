@@ -16,11 +16,10 @@ const LoginForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log(user, password)
 
     if ( user.toLocaleLowerCase().trim() === 'admin' && password.toLocaleLowerCase().trim() === 'admin') {
       setLoggedUser({ user, password })
-      navigate('/home')
+      navigate('/')
     }
     else {
       setError('Usuário ou senha inválidos')
