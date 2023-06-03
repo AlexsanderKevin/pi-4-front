@@ -14,7 +14,7 @@ const EquipmentTable = () => {
   }
 
   return (
-      <table className={`${styles.equipTable}`}>
+      <table className={`table ${styles.equipTable}`}>
         <thead>
           <tr>
             <th>ID</th>
