@@ -7,7 +7,7 @@ const ActionContainer = ({ handleEdit, target_id, targetTable, fetchFunction }) 
 
   const handleDelete = () => {
     setLoading(true)
-    fetch(`https://api-pi-2on3.onrender.com/${targetTable}/${target_id}`, {method: 'DELETE'})
+    fetch(`http://35.198.52.93/${targetTable}/${target_id}`, {method: 'DELETE'})
     .then(fetchFunction)
   }
 
