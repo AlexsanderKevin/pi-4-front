@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './Equipment.module.css'
 import { useParams } from 'react-router-dom'
 import MovimentacaoTable from './Movimentacao/MovimentacaoTable'
+import { MovimentacaoStorage } from './Movimentacao/MovimentacaoContext'
 
 const Equipment = () => {
   const [ equipamento, setEquipamento ] = useState({})
@@ -39,7 +40,9 @@ const Equipment = () => {
         <p className={styles.infoUnidadeMedida}><strong>Unidade de Medida</strong> {equipamento.unidade_medida}</p>
         <p className={styles.infoDescription}><strong>Descrição</strong> {equipamento.descricao}</p>
       </div>
-      <MovimentacaoTable/>
+      <MovimentacaoStorage>
+        <MovimentacaoTable equipamentoId={id}/>
+      </MovimentacaoStorage>
     </section>
   )
 }

@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import Title from '../../../Title/Title'
 import styles from './MovimentacaoTable.module.css'
+import { MovimenacaoContext } from './MovimentacaoContext'
 
-const MovimentacaoTable = () => {
+const MovimentacaoTable = ({equipamentoId}) => {
+  const { movimentacoes, fetchMovimentacoes } = useContext(MovimenacaoContext)
+
+  useState(() => fetchMovimentacoes(equipamentoId), [equipamentoId])
+
   return (
     <section className={styles.section}>
       <header>
