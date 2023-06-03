@@ -9,7 +9,7 @@ export const ZonaStorage = ({children}) => {
 
   const fetchZonas = () => {
     setLoading(true)
-    fetch('https://api-pi-2on3.onrender.com/zonas')
+    fetch('http://35.198.52.93/zonas')
     .then(res => res.json())
     .then(json => {
       setZonas(json)

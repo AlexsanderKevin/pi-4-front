@@ -15,7 +15,7 @@ const TiposForm = () => {
     setLoading(true)
     const body = {nome}
 
-    fetch('https://api-pi-2on3.onrender.com/tipos', {
+    fetch('http://35.198.52.93/tipos', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body)
