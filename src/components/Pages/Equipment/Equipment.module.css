@@ -1,0 +1,22 @@
+.section {
+  grid-column: 1/13;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+.header { grid-column: 1/13;}
+
+.title {
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+
+.title::after {
+  content: '';
+  display: block;
+  width: 6rem;
+  height: .5rem;
+  border-radius: .2rem;
+  background-color: var(--color-second);
+}
