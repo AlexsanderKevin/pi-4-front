@@ -1,0 +1,7 @@
+.section {
+  grid-column: 1/13;  
+}
+
+.table {
+  width: 100%;
+}
