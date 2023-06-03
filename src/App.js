@@ -10,6 +10,7 @@ import NewResponsible from './components/Pages/NewResponsible/NewResponsible';
 import NewMovimentatio from './components/Pages/NewMovimentation/NewMovimentation';
 import { GlobalStorage } from './GlobalContext';
 import ProtectedRoute from './components/Helper/ProtectedRoute';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path='/responsaveis/new' element={ <ProtectedRoute> <NewResponsible/> </ProtectedRoute>} />
             <Route path='/movimentacoes/new' element={ <NewMovimentatio/> } />
           </Routes>
+          <Footer/>
         </GlobalStorage>
       </BrowserRouter>
     </div>
