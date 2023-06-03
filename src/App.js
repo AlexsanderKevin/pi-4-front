@@ -21,10 +21,10 @@ function App() {
           <Header/>
           <Routes>
             <Route path='/teste' element={ <ProtectedRoute> <Teste/> </ProtectedRoute>} />
-            <Route path='/home' element={ <ProtectedRoute> <Home/> </ProtectedRoute>} />
+            <Route path='/' element={ <Home/> } />
             <Route path='/config' element={ <ProtectedRoute> <Config/> </ProtectedRoute>} />
             <Route path='/equipamentos/new' element={ <ProtectedRoute> <NewEquipment/> </ProtectedRoute>} />
-            <Route path='/' element={ <Login/> } />
+            <Route path='/login' element={ <Login/> } />
             <Route path='/responsaveis/new' element={ <ProtectedRoute> <NewResponsible/> </ProtectedRoute>} />
             <Route path='/movimentacoes/new' element={ <NewMovimentatio/> } />
             <Route path='/equipamentos/:id' element={ <Equipment/> } />
