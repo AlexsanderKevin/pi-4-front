@@ -11,11 +11,14 @@ const Equipment = () => {
     .then(res => res.json())
     .then(json => {
       setEquipamento(json)
-      console.log(equipamento)
     })
   }
 
   useEffect(() => fetchEquipamento(id), [id])
+
+  const handleEdit = () => {
+    console.log(equipamento)
+  }
 
   return (
     <section className={styles.section}>
@@ -23,6 +26,13 @@ const Equipment = () => {
         <label styles={styles.headerLabel}>Detalhes:</label>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}> {equipamento?.nome} </h1>
+          <buton 
+            className={`button-default`}
+            onClick={handleEdit}
+          ><i className='pi pi-pencil'></i></buton>
+        </div>
+        <div className={styles.detailsContainer}>
+          <p></p>
         </div>
       </header>
     </section>

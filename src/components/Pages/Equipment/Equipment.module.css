@@ -7,6 +7,15 @@
 
 .header { grid-column: 1/13;}
 
+.titleContainer { 
+  display: flex;
+  gap: 2rem;
+}
+
+.titleContainer i {
+  font-size: 1.7rem;
+}
+
 .title {
   font-size: 3rem;
   text-transform: capitalize;
