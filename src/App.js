@@ -12,6 +12,7 @@ import { GlobalStorage } from './GlobalContext';
 import ProtectedRoute from './components/Helper/ProtectedRoute';
 import Footer from './components/Footer/Footer';
 import Equipment from './components/Pages/Equipment/Equipment';
+import { TipoStorage } from './components/Pages/Config/Tipo/TipoContext';
 
 function App() {
   return (
@@ -19,15 +20,49 @@ function App() {
       <BrowserRouter>
         <GlobalStorage>
           <Header/>
+
           <Routes>
-            <Route path='/teste' element={ <ProtectedRoute> <Teste/> </ProtectedRoute>} />
+            <Route path='/teste' element={ 
+              <ProtectedRoute> 
+                <Teste/> 
+              </ProtectedRoute>} 
+            />
+
             <Route path='/' element={ <Home/> } />
-            <Route path='/config' element={ <ProtectedRoute> <Config/> </ProtectedRoute>} />
-            <Route path='/equipamentos/new' element={ <ProtectedRoute> <NewEquipment/> </ProtectedRoute>} />
+
+            <Route path='/config' element={ 
+              <ProtectedRoute> 
+                <Config/> 
+              </ProtectedRoute>}
+            />
+
+            <Route path='/equipamentos/new' element={ 
+              <ProtectedRoute>
+                <TipoStorage>
+                  <NewEquipment/> 
+                </TipoStorage>
+              </ProtectedRoute>} 
+            />
+
             <Route path='/login' element={ <Login/> } />
-            <Route path='/responsaveis/new' element={ <ProtectedRoute> <NewResponsible/> </ProtectedRoute>} />
-            <Route path='/movimentacoes/new' element={ <ProtectedRoute> <NewMovimentatio/> </ProtectedRoute> } />
-            <Route path='/equipamentos/:id' element={ <Equipment/> } />
+
+            <Route path='/responsaveis/new' element={ 
+              <ProtectedRoute>
+                <NewResponsible/> 
+              </ProtectedRoute>} 
+            />
+
+            <Route path='/movimentacoes/new' element={ 
+              <ProtectedRoute> 
+                <NewMovimentatio/> 
+              </ProtectedRoute> } 
+            />
+
+            <Route path='/equipamentos/:id' element={ 
+              <ProtectedRoute>
+                <Equipment/>
+              </ProtectedRoute>
+            } />
           </Routes>
           <Footer/>
         </GlobalStorage>

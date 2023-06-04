@@ -11,8 +11,9 @@ const Select = ({ name, children, ...props }) => {
         name={name} 
         onChange={() => setValid(true)}
         className={`${styles.input} ${styles.select} ${!valid ? styles.invalid : ''}`} 
+        {...props}
       >
-        <option disabled selected>Selecione</option>
+        <option value={0} disabled >Selecione</option>
         {children}
       </select>
       <label htmlFor={name} className={styles.label}>{ name }</label>

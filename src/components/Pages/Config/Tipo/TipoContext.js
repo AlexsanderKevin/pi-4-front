@@ -17,6 +17,8 @@ export const TipoStorage = ({children}) => {
     })
   }
 
+  useEffect(fetchTipos, [])
+
   return (
     <TipoContext.Provider value={{
       editTarget, 
