@@ -1,0 +1,36 @@
+.section {
+  grid-column: 1/13;  
+}
+
+.table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.table thead {
+  background: linear-gradient( #4f4f4f, #4f4f4f3f );
+}
+
+.table td {
+  border: none;
+  text-align: left;
+}
+
+.table th {
+  padding: 1rem;
+  text-align: left;
+}
+
+.table tr {
+  cursor: default;
+  opacity: .8;
+}
+
+.table tbody tr:hover {
+  opacity: 1;
+  color: var(--color-second);
+}
+
+.table tbody tr {
+  position: relative;
+}

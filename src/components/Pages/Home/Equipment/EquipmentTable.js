@@ -3,12 +3,18 @@ import styles from './EquipmentTable.module.css'
 import '../../../Table/Table.css'
 import { EquipmentContext } from './EquipmentContext'
 import Loading from '../../../Helper/Loading'
+import { useNavigate } from 'react-router-dom'
 
 const EquipmentTable = () => {
   const { equipamentos, loading } = useContext(EquipmentContext)
+  const navigate = useNavigate()
+
+  const handleNavigation = targetId => {
+    navigate(`/equipamentos/${targetId}`)
+  }
 
   return (
-      <table className={`${styles.equipTable}`}>
+      <table className={`table ${styles.equipTable}`}>
         <thead>
           <tr>
             <th>ID</th>
@@ -21,7 +27,11 @@ const EquipmentTable = () => {
         <tbody>
           { !loading ? (
              equipamentos.map( equipamento => (
-              <tr key={equipamento.id_equipamento}>
+              <tr
+                className={styles.tr}
+                onClick={() => handleNavigation(equipamento.id_equipamento)} 
+                key={equipamento.id_equipamento}
+              >
                 <th>{equipamento.id_equipamento}</th>
                 <td>{equipamento.nome}</td>
                 <td>{equipamento.tipo?.nome}</td>

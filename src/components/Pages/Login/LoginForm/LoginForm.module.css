@@ -1,8 +1,9 @@
 .form {
-  margin-top: 10rem;
+  margin-top: 10vh;
   width: 25rem;
   margin-left: auto;
   margin-right: auto;
+  min-height: calc(100vh - 20rem);
 }
 
 .buttonLogin {

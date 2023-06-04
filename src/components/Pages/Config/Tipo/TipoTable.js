@@ -12,7 +12,7 @@ const TipoTable = () => {
 
   return (
     <>
-    <table>
+    <table className='table'>
       <thead>
         <tr>
           <th>ID</th>
