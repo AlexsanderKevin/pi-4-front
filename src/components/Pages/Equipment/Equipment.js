@@ -36,7 +36,7 @@ const Equipment = () => {
       </header>
       <div className={styles.detailsContainer}>
         <p className={styles.infoTipo}><strong>Tipo</strong> {equipamento.tipo?.nome}</p>
-        <p className={styles.infoCodSap}><strong>Cod. SAP</strong> {equipamento.tipo?.nome}</p>
+        <p className={styles.infoCodSap}><strong>Cod.SAP</strong> {equipamento.codigo_sap}</p>
         <p className={styles.infoUnidadeMedida}><strong>Unidade de Medida</strong> {equipamento.unidade_medida}</p>
         <p className={styles.infoDescription}><strong>Descrição</strong> {equipamento.descricao}</p>
       </div>

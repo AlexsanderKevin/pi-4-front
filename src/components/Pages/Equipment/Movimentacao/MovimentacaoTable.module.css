@@ -17,6 +17,7 @@
 .table {
   width: 100%;
   border-spacing: 0;
+  position: relative;
 }
 
 .table thead {
@@ -36,14 +37,45 @@
 
 .table tr {
   cursor: default;
+  position: relative;
+}
+
+.table tr td {
   opacity: .7;
 }
 
-.table tbody tr:hover {
+.table tbody tr:hover td {
   opacity: 1;
   color: var(--color-second);
 }
 
-.table tbody tr {
-  position: relative;
+.table tbody tr:hover::after {
+  box-shadow: 0px 0px 0px 2px var(--color-action);
+  transition: .2s;
+}
+
+.table tbody tr::after {
+  content: '';
+  height: 1.1rem;
+  width: 1.1rem;
+  background-color: var(--color-second);
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - .55rem);
+  left: .07rem;
+}
+
+.table tbody td:first-of-type {
+  padding-left: 3rem;
+}
+
+.table tbody::after {
+  content: '';
+  height: calc(100% - 8rem);
+  width: 3px;
+  background-color: var(--color-second);
+  display: block ;
+  position: absolute; 
+  top: 5.6rem;
+  left: .5rem;
 }
