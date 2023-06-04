@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Equipment.module.css'
-import { useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import MovimentacaoTable from './Movimentacao/MovimentacaoTable'
 import { MovimentacaoStorage } from './Movimentacao/MovimentacaoContext'
 
@@ -43,6 +43,7 @@ const Equipment = () => {
       <MovimentacaoStorage>
         <MovimentacaoTable equipamentoId={id}/>
       </MovimentacaoStorage>
+      <Link to={'/'} className='button-default'><i className='pi pi-arrow-left'></i>Voltar</Link>
     </section>
   )
 }

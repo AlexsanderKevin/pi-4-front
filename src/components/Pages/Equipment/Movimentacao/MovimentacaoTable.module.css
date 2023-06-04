@@ -14,6 +14,7 @@
 .table td {
   border: none;
   text-align: left;
+  padding: 1.3rem 1rem;
 }
 
 .table th {
@@ -23,7 +24,7 @@
 
 .table tr {
   cursor: default;
-  opacity: .8;
+  opacity: .7;
 }
 
 .table tbody tr:hover {
