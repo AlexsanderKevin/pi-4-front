@@ -26,7 +26,7 @@ function App() {
             <Route path='/equipamentos/new' element={ <ProtectedRoute> <NewEquipment/> </ProtectedRoute>} />
             <Route path='/login' element={ <Login/> } />
             <Route path='/responsaveis/new' element={ <ProtectedRoute> <NewResponsible/> </ProtectedRoute>} />
-            <Route path='/movimentacoes/new' element={ <NewMovimentatio/> } />
+            <Route path='/movimentacoes/new' element={ <ProtectedRoute> <NewMovimentatio/> </ProtectedRoute> } />
             <Route path='/equipamentos/:id' element={ <Equipment/> } />
           </Routes>
           <Footer/>

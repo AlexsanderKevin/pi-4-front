@@ -2,17 +2,19 @@ import React, { useContext, useState } from 'react'
 import Title from '../../../Title/Title'
 import styles from './MovimentacaoTable.module.css'
 import { MovimenacaoContext } from './MovimentacaoContext'
+import Loading from '../../../Helper/Loading'
+import { Link } from 'react-router-dom'
 
 const MovimentacaoTable = ({equipamentoId}) => {
-  const { movimentacoes, fetchMovimentacoes } = useContext(MovimenacaoContext)
-  console.log(movimentacoes)
+  const { movimentacoes, fetchMovimentacoes, loading } = useContext(MovimenacaoContext)
 
-  useState(() => fetchMovimentacoes(equipamentoId), [equipamentoId])
+  useState(() => fetchMovimentacoes(equipamentoId), [])
 
   return (
     <section className={styles.section}>
-      <header>
+      <header className={styles.header}>
         <Title>Histórico</Title>
+        <Link to={'/'} className='button-default'><i className='pi pi-sort-alt' ></i></Link>
       </header>
       <table className={styles.table}>
         <thead>
@@ -26,7 +28,8 @@ const MovimentacaoTable = ({equipamentoId}) => {
           </tr>
         </thead>
         <tbody>
-          { movimentacoes.map(movimentacao => (
+          { !loading ? 
+            movimentacoes.map(movimentacao => (
             <tr key={movimentacao.id_movimentacao}>
               <td>{movimentacao.createdAt}</td>
               <td>{movimentacao.zona?.descricao}</td>
@@ -35,7 +38,16 @@ const MovimentacaoTable = ({equipamentoId}) => {
               <td>{movimentacao.quantidade}</td>
               <td>{movimentacao.observacao}</td>
             </tr>
-          ))}
+          )) : (
+            <tr>
+              <td><Loading/></td>
+              <td><Loading/></td>
+              <td><Loading/></td>
+              <td><Loading/></td>
+              <td><Loading/></td>
+              <td><Loading/></td>
+            </tr>
+          )}
         </tbody>
       </table>
     </section>

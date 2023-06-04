@@ -7,6 +7,7 @@ const BtnToggle = ({ active, ...props }) => {
   return (
     <button 
       className={`
+        button-default
         ${active ? styles.active : ''}
         ${styles.button}
         ${styles.btnToggle}

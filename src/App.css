@@ -68,6 +68,12 @@ a {
   gap: .5rem;
 }
 
+.button-default:not(:disabled):hover i {
+  scale: 1.2;
+  transition: .2s;
+}
+
 .button-default i {
   font-size: 1.3rem;
+  transition: .2s;
 }

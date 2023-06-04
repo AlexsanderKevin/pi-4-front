@@ -2,6 +2,18 @@
   grid-column: 1/13;  
 }
 
+.header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.header a {
+  margin-bottom: 1.2rem;
+  transform: rotate(90deg);
+  font-size: 1.5rem;
+}
+
 .table {
   width: 100%;
   border-spacing: 0;
