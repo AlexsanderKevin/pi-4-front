@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState } from 'react'
 export const EquipmentContext = createContext()
 
 export const EquipmentStorage = ({children}) => {
+  const [ editTarget, setEditTarget ] = useState(null)
   const [ equipamentos, setEquipamentos ] = useState([])
   const [ loading, setLoading ] = useState(false)
 
@@ -20,10 +21,12 @@ export const EquipmentStorage = ({children}) => {
 
   return (
     <EquipmentContext.Provider value={{
-      equipamentos, 
+      editTarget,
+      setEditTarget,
       fetchEquipamentos,
       loading,
-      setLoading
+      setLoading,
+      equipamentos
     }}>
       {children}
     </EquipmentContext.Provider>

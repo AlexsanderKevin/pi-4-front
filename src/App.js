@@ -4,7 +4,6 @@ import Header from './components/Header/Header';
 import Teste from './components/Pages/Teste/Teste';
 import Home from './components/Pages/Home/Home';
 import Config from './components/Pages/Config/Config';
-import NewEquipment from './components/Pages/NewEquipment/NewEquipment';
 import Login from './components/Pages/Login/Login';
 import NewResponsible from './components/Pages/NewResponsible/NewResponsible';
 import NewMovimentatio from './components/Pages/NewMovimentation/NewMovimentation';
@@ -23,7 +22,6 @@ function App() {
             <Route path='/teste' element={ <ProtectedRoute> <Teste/> </ProtectedRoute>} />
             <Route path='/' element={ <Home/> } />
             <Route path='/config' element={ <ProtectedRoute> <Config/> </ProtectedRoute>} />
-            <Route path='/equipamentos/new' element={ <ProtectedRoute> <NewEquipment/> </ProtectedRoute>} />
             <Route path='/login' element={ <Login/> } />
             <Route path='/responsaveis/new' element={ <ProtectedRoute> <NewResponsible/> </ProtectedRoute>} />
             <Route path='/movimentacoes/new' element={ <NewMovimentatio/> } />

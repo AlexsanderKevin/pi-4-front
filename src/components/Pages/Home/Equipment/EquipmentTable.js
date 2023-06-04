@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styles from './EquipmentTable.module.css'
 import '../../../Table/Table.css'
 import { EquipmentContext } from './EquipmentContext'
@@ -6,7 +6,10 @@ import Loading from '../../../Helper/Loading'
 import { useNavigate } from 'react-router-dom'
 
 const EquipmentTable = () => {
-  const { equipamentos, loading } = useContext(EquipmentContext)
+  const { fetchEquipamentos, equipamentos, loading, setEditTarget } = useContext(EquipmentContext)
+
+  useEffect(fetchEquipamentos, [])
+
   const navigate = useNavigate()
 
   const handleNavigation = targetId => {
