@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Input from '../../../Forms/Inputs/Input'
 import Title from '../../../Title/Title'
 import FormContainer from '../../../Forms/Containers/FormContainer'
@@ -10,18 +10,34 @@ const LoginForm = () => {
   const [ user, setUser ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ error, setError ] = useState(null)
+  const [ userList, setUserList ] = useState([])
 
   const navigate = useNavigate()
   const { setLoggedUser } = useContext(GlobalContext)
 
+  const fetchUsers = () => {
+    fetch('http://35.198.52.93/responsaveis')
+    .then(res => res.json())
+    .then(json => {
+      setUserList(json)
+    })
+  }
+
+  useEffect(fetchUsers, [])
+
   const handleSubmit = event => {
     event.preventDefault()
 
-    if ( user.toLocaleLowerCase().trim() === 'admin' && password.toLocaleLowerCase().trim() === 'admin') {
-      setLoggedUser({ user, password })
+    let targetUser = userList.filter( item => {
+      if (item.login === user && item.senha === password)
+      return item
+    })
+
+    if (targetUser[0]) {
+      setLoggedUser(targetUser[0])
       navigate('/')
-    }
-    else {
+
+    } else {
       setError('Usuário ou senha inválidos')
     }
   }

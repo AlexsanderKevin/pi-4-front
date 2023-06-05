@@ -7,22 +7,42 @@ import { ZonaContext } from '../Config/Zona/ZonaContext'
 import Textarea from '../../Forms/Inputs/Textarea'
 import BtnVoltar from '../../Forms/Buttons/BtnVoltar'
 import BtnSalvar from '../../Forms/Buttons/BtnSalvar'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useNavigation, useParams } from 'react-router-dom'
 
 const NewMovimentation = () => {
   const [ status, setStatus ] = useState('')
   const [ zonaInput, setZonaInput ] = useState(0)
   const [ quantidade, setQuantidade ] = useState(1)
-  const [ observacoes, setObservacoes ] = useState('')
+  const [ observacao, setObservacao ] = useState('')
 
   const { zonas } = useContext(ZonaContext)
   const { id_equipamento } = useParams()
+  const navigate = useNavigate()
+
+  const handleSubmit = event => {
+    event.preventDefault()
+
+    const body = {
+      id_equipamento,
+      status,
+      id_zona: zonaInput,
+      quantidade,
+      observacao
+    }
+
+    fetch('http://localhost:3000/movimentacoes', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body)
+    })
+    // .then(() => navigate(`/equipamentos/${id_equipamento}`))
+  }
 
   return (
     <div className='form-page'>
       <Title>Nova Movimentação</Title>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input
           type='text'
           placeholder='Ex.: Eme andamento'
@@ -55,8 +75,8 @@ const NewMovimentation = () => {
           type="text"
           name='observações'
           placeholder='Ex.: Esperando peças'
-          value={observacoes}
-          onChange={({target}) => setObservacoes(target.value)}
+          value={observacao}
+          onChange={({target}) => setObservacao(target.value)}
         />
 
         <FormContainer>
