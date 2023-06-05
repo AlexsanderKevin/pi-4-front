@@ -12,7 +12,7 @@ export const MovimentacaoStorage = ({children}) => {
     .then(response => response.json())
     .then(json => {
       setLoading(false)
-      setMovimentacoes(json)
+      setMovimentacoes(json.reverse())
     }) 
   }
 

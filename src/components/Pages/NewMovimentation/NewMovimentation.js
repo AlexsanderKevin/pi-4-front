@@ -8,6 +8,7 @@ import Textarea from '../../Forms/Inputs/Textarea'
 import BtnVoltar from '../../Forms/Buttons/BtnVoltar'
 import BtnSalvar from '../../Forms/Buttons/BtnSalvar'
 import { useNavigate, useNavigation, useParams } from 'react-router-dom'
+import { GlobalContext } from '../../../GlobalContext'
 
 const NewMovimentation = () => {
   const [ status, setStatus ] = useState('')
@@ -17,12 +18,14 @@ const NewMovimentation = () => {
 
   const { zonas } = useContext(ZonaContext)
   const { id_equipamento } = useParams()
+  const { loggedUser } = useContext(GlobalContext)
   const navigate = useNavigate()
 
   const handleSubmit = event => {
     event.preventDefault()
 
     const body = {
+      id_responsavel: loggedUser.id_responsavel,
       id_equipamento,
       status,
       id_zona: zonaInput,
@@ -30,12 +33,12 @@ const NewMovimentation = () => {
       observacao
     }
 
-    fetch('http://localhost:3000/movimentacoes', {
+    fetch('http://35.198.52.93/movimentacoes', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body)
     })
-    // .then(() => navigate(`/equipamentos/${id_equipamento}`))
+    .then(() => navigate(`/equipamentos/${id_equipamento}`))
   }
 
   return (
@@ -49,6 +52,7 @@ const NewMovimentation = () => {
           name='status'
           value={status}
           onChange={({target}) => setStatus(target.value)}
+          required
         />
 
         <FormContainer>
