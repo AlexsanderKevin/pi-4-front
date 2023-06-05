@@ -50,7 +50,7 @@ function App() {
               </ProtectedRoute>} 
             />
 
-            <Route path='/movimentacoes/new' element={ 
+            <Route path='/movimentacoes/:id_equipamento/new' element={ 
               <ProtectedRoute> 
                 <NewMovimentatio/> 
               </ProtectedRoute> } 

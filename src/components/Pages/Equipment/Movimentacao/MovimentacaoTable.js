@@ -14,7 +14,7 @@ const MovimentacaoTable = ({equipamentoId}) => {
     <section className={styles.section}>
       <header className={styles.header}>
         <Title>Histórico</Title>
-        <Link to={'/'} className='button-default'><i className='pi pi-sort-alt' ></i></Link>
+        <Link to={`/movimentacoes/${equipamentoId}/new`} className='button-default'><i className='pi pi-sort-alt' ></i></Link>
       </header>
       <table className={styles.table}>
         <thead>
