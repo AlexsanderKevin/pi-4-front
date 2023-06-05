@@ -9,7 +9,7 @@ import FormContainer from '../../Forms/Containers/FormContainer'
 import { TipoContext } from '../Config/Tipo/TipoContext'
 import { useNavigate } from 'react-router-dom'
 
-const NewEquipment = () => {
+const EquipmentForm = () => {
   const { tipos } = useContext(TipoContext)
   const navigate = useNavigate()
 
@@ -110,4 +110,4 @@ const NewEquipment = () => {
   )
 }
 
-export default NewEquipment
+export default EquipmentForm

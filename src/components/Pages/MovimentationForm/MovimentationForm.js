@@ -10,7 +10,7 @@ import BtnSalvar from '../../Forms/Buttons/BtnSalvar'
 import { useNavigate, useNavigation, useParams } from 'react-router-dom'
 import { GlobalContext } from '../../../GlobalContext'
 
-const NewMovimentation = () => {
+const MovimentationForm = () => {
   const [ status, setStatus ] = useState('')
   const [ zonaInput, setZonaInput ] = useState(0)
   const [ quantidade, setQuantidade ] = useState(1)
@@ -48,7 +48,7 @@ const NewMovimentation = () => {
       <form onSubmit={handleSubmit}>
         <Input
           type='text'
-          placeholder='Ex.: Eme andamento'
+          placeholder='Ex.: Em andamento'
           name='status'
           value={status}
           onChange={({target}) => setStatus(target.value)}
@@ -92,4 +92,4 @@ const NewMovimentation = () => {
   )
 }
 
-export default NewMovimentation
+export default MovimentationForm

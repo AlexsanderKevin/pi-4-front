@@ -4,10 +4,10 @@ import Header from './components/Header/Header';
 import Teste from './components/Pages/Teste/Teste';
 import Home from './components/Pages/Home/Home';
 import Config from './components/Pages/Config/Config';
-import NewEquipment from './components/Pages/NewEquipment/NewEquipment';
+import EquipmentForm from './components/Pages/EquipmentForm/EquipmentForm';
 import Login from './components/Pages/Login/Login';
-import NewResponsible from './components/Pages/NewResponsible/NewResponsible';
-import NewMovimentation from './components/Pages/NewMovimentation/NewMovimentation';
+import ResponsibleForm from './components/Pages/ResponsibleForm/ResponsibleForm';
+import MovimentationForm from './components/Pages/MovimentationForm/MovimentationForm';
 import { GlobalStorage } from './GlobalContext';
 import ProtectedRoute from './components/Helper/ProtectedRoute';
 import Footer from './components/Footer/Footer';
@@ -39,7 +39,7 @@ function App() {
 
             <Route path='/equipamentos/new' element={ 
               <TipoStorage>
-                <NewEquipment/> 
+                <EquipmentForm/> 
               </TipoStorage>
             }/>
 
@@ -47,14 +47,14 @@ function App() {
 
             <Route path='/responsaveis/new' element={ 
               <ProtectedRoute>
-                <NewResponsible/> 
+                <ResponsibleForm/> 
               </ProtectedRoute>} 
             />
 
             <Route path='/movimentacoes/:id_equipamento/new' element={ 
               <ProtectedRoute> 
                 <ZonaStorage>
-                  <NewMovimentation/> 
+                  <MovimentationForm/> 
                 </ZonaStorage>
               </ProtectedRoute> 
             }/>

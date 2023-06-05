@@ -1,13 +1,11 @@
 import React from 'react'
 import Input from '../../Forms/Inputs/Input'
-import Textarea from '../../Forms/Inputs/Textarea'
-import Select from '../../Forms/Inputs/Select'
 import BtnVoltar from '../../Forms/Buttons/BtnVoltar'
 import BtnSalvar from '../../Forms/Buttons/BtnSalvar'
 import Title from '../../Title/Title'
 import FormContainer from '../../Forms/Containers/FormContainer'
 
-const NewResponsible = () => {
+const ResponsibleForm = () => {
   return (
     <div className='form-page'>
        <Title>Cadastro de Responsaveis</Title>
@@ -31,4 +29,4 @@ const NewResponsible = () => {
   )
 }
 
-export default NewResponsible
+export default ResponsibleForm
