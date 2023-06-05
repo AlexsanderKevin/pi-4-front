@@ -7,12 +7,13 @@ import Config from './components/Pages/Config/Config';
 import NewEquipment from './components/Pages/NewEquipment/NewEquipment';
 import Login from './components/Pages/Login/Login';
 import NewResponsible from './components/Pages/NewResponsible/NewResponsible';
-import NewMovimentatio from './components/Pages/NewMovimentation/NewMovimentation';
+import NewMovimentation from './components/Pages/NewMovimentation/NewMovimentation';
 import { GlobalStorage } from './GlobalContext';
 import ProtectedRoute from './components/Helper/ProtectedRoute';
 import Footer from './components/Footer/Footer';
 import Equipment from './components/Pages/Equipment/Equipment';
 import { TipoStorage } from './components/Pages/Config/Tipo/TipoContext';
+import { ZonaStorage } from './components/Pages/Config/Zona/ZonaContext';
 
 function App() {
   return (
@@ -52,15 +53,17 @@ function App() {
 
             <Route path='/movimentacoes/:id_equipamento/new' element={ 
               <ProtectedRoute> 
-                <NewMovimentatio/> 
-              </ProtectedRoute> } 
-            />
+                <ZonaStorage>
+                  <NewMovimentation/> 
+                </ZonaStorage>
+              </ProtectedRoute> 
+            }/>
 
             <Route path='/equipamentos/:id' element={ 
               <ProtectedRoute>
                 <Equipment/>
               </ProtectedRoute>
-            } />
+            }/>
           </Routes>
           <Footer/>
         </GlobalStorage>

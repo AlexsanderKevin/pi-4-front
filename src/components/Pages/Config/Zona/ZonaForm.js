@@ -8,8 +8,8 @@ import BtnSalvar from '../../../Forms/Buttons/BtnSalvar'
 import { ZonaContext } from './ZonaContext'
 
 const ZonaForm = () => {
-  const [ nome, setNome ] = useState(null)
-  const [ descricao, setDescricao ] = useState(null)
+  const [ nome, setNome ] = useState('')
+  const [ descricao, setDescricao ] = useState('')
   const [ active, setActive ] = useState(false)
 
   const { fetchZonas, loading, setLoading } = useContext(ZonaContext)
@@ -44,6 +44,7 @@ const ZonaForm = () => {
         name='Descrição'
         placeholder='Aguardando Teste'
         required
+        value={descricao}
         onChange={({target}) => setDescricao(target.value)}
       />
       <FormContainer>
