@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 const MovimentacaoTable = ({equipamentoId}) => {
   const { movimentacoes, fetchMovimentacoes, loading } = useContext(MovimenacaoContext)
 
-  useState(() => fetchMovimentacoes(equipamentoId), [])
+  useState(() => fetchMovimentacoes(equipamentoId), [fetchMovimentacoes])
 
   return (
     <section className={styles.section}>

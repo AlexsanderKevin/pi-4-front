@@ -17,7 +17,11 @@ export const MovimentacaoStorage = ({children}) => {
   }
 
   return (
-    <MovimenacaoContext.Provider value={{ fetchMovimentacoes, movimentacoes, loading }}>
+    <MovimenacaoContext.Provider value={{ 
+      fetchMovimentacoes, 
+      movimentacoes, 
+      loading 
+    }}>
       {children}
     </MovimenacaoContext.Provider>
   )

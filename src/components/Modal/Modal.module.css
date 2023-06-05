@@ -19,3 +19,7 @@
   min-width: 20rem;
   background-color: var(--color-bg);
 }
+
+:global(.warning) h1 {
+  color: var(--color-second)
+}

@@ -3,9 +3,12 @@ import styles from './Equipment.module.css'
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import MovimentacaoTable from './Movimentacao/MovimentacaoTable'
 import { MovimentacaoStorage } from './Movimentacao/MovimentacaoContext'
+import ConfirmationModal from '../../Modal/ConfirmationModal'
 
 const Equipment = () => {
   const [ equipamento, setEquipamento ] = useState({})
+  const [ activeModal, setActiveModal ] = useState(false)
+
   const { id } = useParams()
   const navigate = useNavigate()
 
@@ -37,14 +40,17 @@ const Equipment = () => {
       <header className={styles.header}>
         <label styles={styles.headerLabel}>Detalhes:</label>
         <div className={styles.titleContainer}>
+
           <h1 className={styles.title}> {equipamento?.nome} </h1>
+
           <button 
             className={`button-default`}
             onClick={handleEdit}
           ><i className='pi pi-pencil'></i></button>
+
           <button 
             className={`button-default`}
-            onClick={handleDelete}
+            onClick={() => setActiveModal(true)}
           >
             <i className='pi pi-trash'></i>
           </button>
@@ -60,6 +66,14 @@ const Equipment = () => {
         <MovimentacaoTable equipamentoId={id}/>
       </MovimentacaoStorage>
       <Link to={'/'} className='button-default'><i className='pi pi-arrow-left'></i>Voltar</Link>
+
+      <ConfirmationModal 
+        active={activeModal} 
+        setActive={setActiveModal}
+        title='Atenção!' 
+        message='Tem certeza que deseja deletar esse equipamento?'
+        confirmationFunction={handleDelete}
+      />
     </section>
   )
 }

@@ -77,3 +77,7 @@ a {
   font-size: 1.3rem;
   transition: .2s;
 }
+
+h1.warning  {
+  text-align: center;
+}
