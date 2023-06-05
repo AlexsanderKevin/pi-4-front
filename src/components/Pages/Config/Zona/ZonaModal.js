@@ -42,7 +42,7 @@ const ZonaModal = () => {
 
   return (
     <Modal title='Editar Zona' active={editTarget}>
-      <form style={{marginBottom: 'o'}} onSubmit={handleSubmit}>
+      <form style={{marginBottom: '0'}} onSubmit={handleSubmit}>
         <Input
           name='nome'
           value={nome}
