@@ -17,6 +17,7 @@ const Nav = () => {
   return (
     <nav className={styles.nav}>
       <NavLink to={'/'}>Home</NavLink>
+      <NavLink to={'/Dashboard'}>Dashboard</NavLink>
       { loggedUser ? (
         <>
           <NavLink to={'/config'}>Configurações</NavLink>
