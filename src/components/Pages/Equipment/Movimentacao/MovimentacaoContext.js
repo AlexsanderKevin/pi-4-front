@@ -8,12 +8,11 @@ export const MovimentacaoStorage = ({children}) => {
 
   const fetchMovimentacoes = id => {
     setLoading(true)
-    fetch(`http://35.198.52.93/movimentacoes`)
+    fetch(`http://35.198.52.93/movimentacoes/equipamentos/${id}`)
     .then(response => response.json())
     .then(json => {
-      const filtered = json.filter( item => item.id_equipamento === +id )
       setLoading(false)
-      setMovimentacoes(filtered)
+      setMovimentacoes(json)
     }) 
   }
 

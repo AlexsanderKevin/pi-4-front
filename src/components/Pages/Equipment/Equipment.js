@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Equipment.module.css'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import MovimentacaoTable from './Movimentacao/MovimentacaoTable'
 import { MovimentacaoStorage } from './Movimentacao/MovimentacaoContext'
 
 const Equipment = () => {
   const [ equipamento, setEquipamento ] = useState({})
   const { id } = useParams()
+  const navigate = useNavigate()
 
   const fetchEquipamento = targetId => {
     fetch(`http://35.198.52.93/equipamentos/${targetId}`)
@@ -16,10 +17,19 @@ const Equipment = () => {
     })
   }
 
+  const deleteEquipamento = () => {
+    fetch(`http://35.198.52.93/equipamentos/${id}`, {method: 'DELETE'})
+  }
+
   useEffect(() => fetchEquipamento(id), [id])
 
   const handleEdit = () => {
     console.log(equipamento)
+  }
+
+  const handleDelete = () => {
+    deleteEquipamento()
+    navigate('/')
   }
 
   return (
@@ -32,6 +42,12 @@ const Equipment = () => {
             className={`button-default`}
             onClick={handleEdit}
           ><i className='pi pi-pencil'></i></button>
+          <button 
+            className={`button-default`}
+            onClick={handleDelete}
+          >
+            <i className='pi pi-trash'></i>
+          </button>
         </div>
       </header>
       <div className={styles.detailsContainer}>

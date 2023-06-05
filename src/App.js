@@ -37,12 +37,10 @@ function App() {
             />
 
             <Route path='/equipamentos/new' element={ 
-              <ProtectedRoute>
-                <TipoStorage>
-                  <NewEquipment/> 
-                </TipoStorage>
-              </ProtectedRoute>} 
-            />
+              <TipoStorage>
+                <NewEquipment/> 
+              </TipoStorage>
+            }/>
 
             <Route path='/login' element={ <Login/> } />
 
