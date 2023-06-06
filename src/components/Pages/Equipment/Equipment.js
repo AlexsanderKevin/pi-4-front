@@ -26,10 +26,6 @@ const Equipment = () => {
 
   useEffect(() => fetchEquipamento(id), [id])
 
-  const handleEdit = () => {
-    console.log(equipamento)
-  }
-
   const handleDelete = () => {
     deleteEquipamento()
     navigate('/')
@@ -43,10 +39,9 @@ const Equipment = () => {
 
           <h1 className={styles.title}> {equipamento?.nome} </h1>
 
-          <button 
+          <Link to={`/equipamentos/${equipamento.id_equipamento}/edit`}
             className={`button-default`}
-            onClick={handleEdit}
-          ><i className='pi pi-pencil'></i></button>
+          ><i className='pi pi-pencil'></i></Link>
 
           <button 
             className={`button-default`}

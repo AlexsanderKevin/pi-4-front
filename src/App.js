@@ -43,6 +43,12 @@ function App() {
               </TipoStorage>
             }/>
 
+            <Route path='/equipamentos/:id/edit' element={ 
+              <TipoStorage>
+                <EquipmentForm/> 
+              </TipoStorage>
+            }/>
+
             <Route path='/login' element={ <Login/> } />
 
             <Route path='/responsaveis/new' element={ 
