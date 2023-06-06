@@ -35,6 +35,10 @@
   text-align: left;
 }
 
+.table th:first-of-type {
+  padding-left: 3rem;
+}
+
 .table tr {
   cursor: default;
   position: relative;

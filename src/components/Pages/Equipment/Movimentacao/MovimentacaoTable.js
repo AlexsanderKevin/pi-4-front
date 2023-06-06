@@ -31,7 +31,7 @@ const MovimentacaoTable = ({equipamentoId}) => {
           { !loading ? 
             movimentacoes.map(movimentacao => (
             <tr key={movimentacao.id_movimentacao}>
-              <td>{movimentacao.createdAt}</td>
+              <td>{movimentacao.createdAt.substring(0, 10)}</td>
               <td>{movimentacao.status}</td>
               <td>{movimentacao.responsavel?.nome}</td>
               <td>{movimentacao.zona?.nome}</td>
