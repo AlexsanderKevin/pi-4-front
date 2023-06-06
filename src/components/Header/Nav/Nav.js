@@ -16,9 +16,9 @@ const Nav = () => {
 
   return (
     <nav className={styles.nav}>
-      <NavLink to={'/'}>Home</NavLink>
       { loggedUser ? (
         <>
+          <NavLink to={'/'}>Home</NavLink>
           <NavLink to={'/config'}>Configurações</NavLink>
           <button 
             className={`button-default ${styles.logout}`}

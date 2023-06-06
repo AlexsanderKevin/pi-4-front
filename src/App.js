@@ -14,6 +14,7 @@ import Footer from './components/Footer/Footer';
 import Equipment from './components/Pages/Equipment/Equipment';
 import { TipoStorage } from './components/Pages/Config/Tipo/TipoContext';
 import { ZonaStorage } from './components/Pages/Config/Zona/ZonaContext';
+import NotFound from './components/Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -70,6 +71,8 @@ function App() {
                 <Equipment/>
               </ProtectedRoute>
             }/>
+
+            <Route path='*' element={ <NotFound/> }/>
           </Routes>
           <Footer/>
         </GlobalStorage>
