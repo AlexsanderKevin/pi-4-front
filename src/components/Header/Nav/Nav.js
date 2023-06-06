@@ -20,6 +20,7 @@ const Nav = () => {
         <>
           <NavLink to={'/'}>Home</NavLink>
           <NavLink to={'/config'}>Configurações</NavLink>
+          { loggedUser.cargo === 'admin' && <NavLink to={'/responsaveis'}>Responsáveis</NavLink> }
           <button 
             className={`button-default ${styles.logout}`}
             onClick={handleLogout}
