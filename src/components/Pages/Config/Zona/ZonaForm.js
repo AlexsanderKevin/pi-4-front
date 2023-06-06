@@ -18,7 +18,7 @@ const ZonaForm = () => {
     setLoading(true)
     const body = {nome, descricao}
 
-    fetch('http://35.198.52.93/zonas', {
+    fetch('https://api-pi-2on3.onrender.com/zonas', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body)

@@ -8,7 +8,7 @@ export const EquipmentStorage = ({children}) => {
 
   const fetchEquipamentos = () => {
     setLoading(true)
-    fetch('http://35.198.52.93/equipamentos')
+    fetch('https://api-pi-2on3.onrender.com/equipamentos')
       .then(res => res.json())
       .then(json => {
         setEquipamentos(json)

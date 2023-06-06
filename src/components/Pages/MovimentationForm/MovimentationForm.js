@@ -33,7 +33,7 @@ const MovimentationForm = () => {
       observacao
     }
 
-    fetch('http://35.198.52.93/movimentacoes', {
+    fetch('https://api-pi-2on3.onrender.com/movimentacoes', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body)

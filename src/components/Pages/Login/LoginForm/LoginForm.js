@@ -16,7 +16,7 @@ const LoginForm = () => {
   const { setLoggedUser } = useContext(GlobalContext)
 
   const fetchUsers = () => {
-    fetch('http://35.198.52.93/responsaveis')
+    fetch('https://api-pi-2on3.onrender.com/responsaveis')
     .then(res => res.json())
     .then(json => {
       setUserList(json)

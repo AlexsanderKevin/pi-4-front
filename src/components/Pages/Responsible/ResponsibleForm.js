@@ -18,7 +18,7 @@ const ResponsibleForm = () => {
   const [ senha, setSenha ] = useState('')
 
   const postResponsible = (body) => {
-    fetch(`http://35.198.52.93/responsaveis`, {
+    fetch(`https://api-pi-2on3.onrender.com/responsaveis`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body)

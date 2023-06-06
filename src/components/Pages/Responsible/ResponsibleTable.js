@@ -10,7 +10,7 @@ const ResponsibleTable = () => {
 
   const fetchResponsibles = () => {
     setLoading(true)
-    fetch('http://35.198.52.93/responsaveis/')
+    fetch('https://api-pi-2on3.onrender.com/responsaveis/')
     .then(res => res.json())
     .then(json => {
         setResponsibles(json)

@@ -8,7 +8,7 @@ export const MovimentacaoStorage = ({children}) => {
 
   const fetchMovimentacoes = id => {
     setLoading(true)
-    fetch(`http://35.198.52.93/movimentacoes/equipamentos/${id}`)
+    fetch(`https://api-pi-2on3.onrender.com/movimentacoes/equipamentos/${id}`)
     .then(response => response.json())
     .then(json => {
       setLoading(false)

@@ -24,7 +24,7 @@ const EquipmentForm = () => {
   const [ descricao, setDescricao ] = useState('')
 
   const fetchEquipment = (equipamentoId) => {
-    fetch(`http://35.198.52.93/equipamentos/${equipamentoId}`)
+    fetch(`https://api-pi-2on3.onrender.com/equipamentos/${equipamentoId}`)
     .then(res => res.json())
     .then(json => {
       setEditTarget(json)
@@ -40,7 +40,7 @@ const EquipmentForm = () => {
   useEffect(() => {if (id) fetchEquipment(id)}, [id])
 
   const postEquipment = (body, targetId) => {
-    const url = `http://35.198.52.93/equipamentos${targetId ? `/${targetId}` : ''}`
+    const url = `https://api-pi-2on3.onrender.com/equipamentos${targetId ? `/${targetId}` : ''}`
     fetch( url, {
       method: targetId ? 'PUT' : 'POST',
       headers: {'Content-Type': 'application/json'},

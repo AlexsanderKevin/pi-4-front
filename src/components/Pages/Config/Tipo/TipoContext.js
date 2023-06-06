@@ -9,7 +9,7 @@ export const TipoStorage = ({children}) => {
 
   const fetchTipos = () => {
     setLoading(true)
-    fetch('http://35.198.52.93/tipos')
+    fetch('https://api-pi-2on3.onrender.com/tipos')
     .then(res => res.json())
     .then(json => {
       setTipos(json)

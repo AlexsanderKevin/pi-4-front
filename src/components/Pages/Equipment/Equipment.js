@@ -13,7 +13,7 @@ const Equipment = () => {
   const navigate = useNavigate()
 
   const fetchEquipamento = targetId => {
-    fetch(`http://35.198.52.93/equipamentos/${targetId}`)
+    fetch(`https://api-pi-2on3.onrender.com/equipamentos/${targetId}`)
     .then(res => res.json())
     .then(json => {
       setEquipamento(json)
@@ -21,7 +21,7 @@ const Equipment = () => {
   }
 
   const deleteEquipamento = () => {
-    fetch(`http://35.198.52.93/equipamentos/${id}`, {method: 'DELETE'})
+    fetch(`https://api-pi-2on3.onrender.com/equipamentos/${id}`, {method: 'DELETE'})
   }
 
   useEffect(() => fetchEquipamento(id), [id])
