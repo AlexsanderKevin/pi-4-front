@@ -47,11 +47,6 @@ const Dashboard = () => {
     useEffect(() => fetchMovimentacoesByYear(now.getFullYear()), [now.getFullYear()])
     useEffect(() => fetchMovimentacoesByLastYear(now.getFullYear() - 1), [now.getFullYear() - 1])
 
-    console.log(((100 * total_saidas) / total_saidas_mp))
-    console.log(total_saidas)
-    console.log(total_saidas_mp)
-    console.log(now.getMonth())
-
     return(
         <>
             <Box
