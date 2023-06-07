@@ -16,11 +16,12 @@ const Nav = () => {
 
   return (
     <nav className={styles.nav}>
-      <NavLink to={'/'}>Home</NavLink>
-      <NavLink to={'/Dashboard'}>Dashboard</NavLink>
       { loggedUser ? (
         <>
+          <NavLink to={'/'}>Home</NavLink>
+          <NavLink to={'/Dashboard'}>Dashboard</NavLink>
           <NavLink to={'/config'}>Configurações</NavLink>
+          { loggedUser.cargo === 'admin' && <NavLink to={'/responsaveis'}>Responsáveis</NavLink> }
           <button 
             className={`button-default ${styles.logout}`}
             onClick={handleLogout}

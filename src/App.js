@@ -5,15 +5,18 @@ import Teste from './components/Pages/Teste/Teste';
 import Home from './components/Pages/Home/Home';
 import Dashboard from './components/Pages/Dashboard/Dashboard'
 import Config from './components/Pages/Config/Config';
-import NewEquipment from './components/Pages/NewEquipment/NewEquipment';
+import EquipmentForm from './components/Pages/EquipmentForm/EquipmentForm';
 import Login from './components/Pages/Login/Login';
-import NewResponsible from './components/Pages/NewResponsible/NewResponsible';
-import NewMovimentatio from './components/Pages/NewMovimentation/NewMovimentation';
+import ResponsibleForm from './components/Pages/Responsible/ResponsibleForm';
+import MovimentationForm from './components/Pages/MovimentationForm/MovimentationForm';
 import { GlobalStorage } from './GlobalContext';
 import ProtectedRoute from './components/Helper/ProtectedRoute';
 import Footer from './components/Footer/Footer';
 import Equipment from './components/Pages/Equipment/Equipment';
 import { TipoStorage } from './components/Pages/Config/Tipo/TipoContext';
+import { ZonaStorage } from './components/Pages/Config/Zona/ZonaContext';
+import NotFound from './components/Pages/NotFound/NotFound';
+import ResponsibleTable from './components/Pages/Responsible/ResponsibleTable';
 
 function App() {
   return (
@@ -40,32 +43,46 @@ function App() {
             />
 
             <Route path='/equipamentos/new' element={ 
-              <ProtectedRoute>
-                <TipoStorage>
-                  <NewEquipment/> 
-                </TipoStorage>
-              </ProtectedRoute>} 
-            />
+              <TipoStorage>
+                <EquipmentForm/> 
+              </TipoStorage>
+            }/>
+
+            <Route path='/equipamentos/:id/edit' element={ 
+              <TipoStorage>
+                <EquipmentForm/> 
+              </TipoStorage>
+            }/>
 
             <Route path='/login' element={ <Login/> } />
 
+            <Route path='/responsaveis' element={
+              <ProtectedRoute>
+                <ResponsibleTable/>
+              </ProtectedRoute>
+            }/>
+
             <Route path='/responsaveis/new' element={ 
               <ProtectedRoute>
-                <NewResponsible/> 
+                <ResponsibleForm/> 
               </ProtectedRoute>} 
             />
 
-            <Route path='/movimentacoes/new' element={ 
+            <Route path='/movimentacoes/:id_equipamento/new' element={ 
               <ProtectedRoute> 
-                <NewMovimentatio/> 
-              </ProtectedRoute> } 
-            />
+                <ZonaStorage>
+                  <MovimentationForm/> 
+                </ZonaStorage>
+              </ProtectedRoute> 
+            }/>
 
             <Route path='/equipamentos/:id' element={ 
               <ProtectedRoute>
                 <Equipment/>
               </ProtectedRoute>
-            } />
+            }/>
+
+            <Route path='*' element={ <NotFound/> }/>
           </Routes>
           <Footer/>
         </GlobalStorage>

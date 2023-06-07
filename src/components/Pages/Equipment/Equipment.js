@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Equipment.module.css'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import MovimentacaoTable from './Movimentacao/MovimentacaoTable'
 import { MovimentacaoStorage } from './Movimentacao/MovimentacaoContext'
+import ConfirmationModal from '../../Modal/ConfirmationModal'
 
 const Equipment = () => {
   const [ equipamento, setEquipamento ] = useState({})
+  const [ activeModal, setActiveModal ] = useState(false)
+
   const { id } = useParams()
+  const navigate = useNavigate()
 
   const fetchEquipamento = targetId => {
     fetch(`http://35.198.52.93/equipamentos/${targetId}`)
@@ -16,10 +20,15 @@ const Equipment = () => {
     })
   }
 
+  const deleteEquipamento = () => {
+    fetch(`http://35.198.52.93/equipamentos/${id}`, {method: 'DELETE'})
+  }
+
   useEffect(() => fetchEquipamento(id), [id])
 
-  const handleEdit = () => {
-    console.log(equipamento)
+  const handleDelete = () => {
+    deleteEquipamento()
+    navigate('/')
   }
 
   return (
@@ -27,11 +36,19 @@ const Equipment = () => {
       <header className={styles.header}>
         <label styles={styles.headerLabel}>Detalhes:</label>
         <div className={styles.titleContainer}>
+
           <h1 className={styles.title}> {equipamento?.nome} </h1>
+
+          <Link to={`/equipamentos/${equipamento.id_equipamento}/edit`}
+            className={`button-default`}
+          ><i className='pi pi-pencil'></i></Link>
+
           <button 
             className={`button-default`}
-            onClick={handleEdit}
-          ><i className='pi pi-pencil'></i></button>
+            onClick={() => setActiveModal(true)}
+          >
+            <i className='pi pi-trash'></i>
+          </button>
         </div>
       </header>
       <div className={styles.detailsContainer}>
@@ -44,6 +61,14 @@ const Equipment = () => {
         <MovimentacaoTable equipamentoId={id}/>
       </MovimentacaoStorage>
       <Link to={'/'} className='button-default'><i className='pi pi-arrow-left'></i>Voltar</Link>
+
+      <ConfirmationModal 
+        active={activeModal} 
+        setActive={setActiveModal}
+        title='Atenção!' 
+        message='Tem certeza que deseja deletar esse equipamento?'
+        confirmationFunction={handleDelete}
+      />
     </section>
   )
 }

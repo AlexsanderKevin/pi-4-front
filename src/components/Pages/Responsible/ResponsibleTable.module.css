@@ -1,0 +1,17 @@
+.responsibles {
+  grid-column: 1/13;  
+}
+
+.responsibles header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.responsibles i {
+  margin-bottom: 1rem;
+}
+
+.responsibleTable {
+  width: 100%;
+}

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ZonaContext = createContext()
 
@@ -16,6 +16,8 @@ export const ZonaStorage = ({children}) => {
       setLoading(false)
     })
   }
+
+  useEffect(fetchZonas, [])
 
   return (
     <ZonaContext.Provider value={{

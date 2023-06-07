@@ -5,17 +5,47 @@ import { OverviewSales } from './overview/overview-sales'
 import { OverviewTasksProgress } from './overview/overview-tasks-progress'
 import { OverviewTotalCustomers } from './overview/overview-total-customers'
 import { OverviewTraffic } from './overview/overview-traffic'
-import { DashboardContext } from './DashboardContext'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 const now = new Date()
 
-const Dashboard = () => {
-    /* Solucionar importação de contexto
-    
-    const { fetchMovimentacoesByYear } = useContext(DashboardContext)
+const Dashboard = () => { 
+    const [ movimentacoes, setMovimentacoes ] = useState([])
+    const [ total_entradas, setTotalEntradas ] = useState('')
+    const [ total_saidas, setTotalSaidas ] = useState('')
+    var [ total_meses ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    var [ total_meses_ap ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
-    useEffect(() => fetchMovimentacoesByYear(), [])*/
+    const fetchMovimentacoesByYear = year => {
+        fetch(`http://35.198.52.93/movimentacoes/dashboard/${year}`)
+        .then(res => res.json())
+        .then(json => {
+            var i = 0
+
+            setMovimentacoes(json)
+            setTotalEntradas(json.filter(function(value) { return ((value.data_saida === null || value.status.toString().toUpperCase() === 'FINALIZADO') && 
+                            new Date (value.data_entrada).getMonth() === now.getMonth() ) }).length)
+            setTotalSaidas(json.filter(function(value) { return ((value.data_saida !== null) && 
+                            new Date (value.data_entrada).getMonth() === now.getMonth() ) }).length)
+            for (i = 0; i < 12; i++){
+                total_meses[i] = json.filter(function(value) {return (new Date(value.data_entrada).getMonth() === i)}).length
+            }
+        })
+    }
+
+    const fetchMovimentacoesByLastYear = year => {
+        fetch(`http://35.198.52.93/movimentacoes/dashboard/${year}`)
+        .then(res => res.json())
+        .then(json => {
+            var i = 0
+            for (i = 0; i < 12; i++){
+                total_meses_ap[i] = json.filter(function(value) {return (new Date(value.data_entrada).getMonth() === i)}).length
+            }
+        })
+    }
+
+    useEffect(() => fetchMovimentacoesByYear(now.getFullYear()), [now.getFullYear()])
+    useEffect(() => fetchMovimentacoesByLastYear(now.getFullYear() - 1), [now.getFullYear() - 1])
 
     return(
         <>
@@ -38,10 +68,8 @@ const Dashboard = () => {
                     lg={3}
                     >
                     <OverviewBudget
-                        difference={12}
-                        positive
                         sx={{ height: '100%' }}
-                        value="15"
+                        value={total_entradas.toString()}
                     />
                     </Grid>
                     <Grid
@@ -50,10 +78,8 @@ const Dashboard = () => {
                     lg={3}
                     >
                     <OverviewTotalCustomers
-                        difference={16}
-                        positive={false}
                         sx={{ height: '100%' }}
-                        value="10"
+                        value={total_saidas.toString()}
                     />
                     </Grid>
                     <Grid
@@ -63,7 +89,7 @@ const Dashboard = () => {
                     >
                     <OverviewTasksProgress
                         sx={{ height: '100%' }}
-                        value={33}
+                        value={(((total_entradas - total_saidas) * 100) / total_entradas).toFixed(2)}
                     />
                     </Grid>
                     <Grid
@@ -80,11 +106,11 @@ const Dashboard = () => {
                         chartSeries={[
                         {
                             name: 'Este ano',
-                            data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20]
+                            data: [total_meses[0], total_meses[1], total_meses[2], total_meses[3], total_meses[4], total_meses[5], total_meses[6], total_meses[7], total_meses[8], total_meses[9], total_meses[10], total_meses[11]]
                         },
                         {
                             name: 'Ano passado',
-                            data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13]
+                            data: [total_meses_ap[0], total_meses_ap[1], total_meses_ap[2], total_meses_ap[3], total_meses_ap[4], total_meses_ap[5], total_meses_ap[6], total_meses_ap[7], total_meses_ap[8], total_meses_ap[9], total_meses_ap[10], total_meses_ap[11]]
                         }
                         ]}
                         sx={{ height: '100%' }}
@@ -96,8 +122,9 @@ const Dashboard = () => {
                     lg={4}
                     >
                     <OverviewTraffic
-                        chartSeries={[1, 66, 33]}
-                        labels={['Entradas', 'Saidas', 'Em reparo']}
+                        chartSeries={[(total_entradas - total_saidas) * 100 / total_entradas, 
+                        (total_saidas * 100) / total_entradas]}
+                        labels={['Entradas', 'Saidas']}
                         sx={{ height: '100%' }}
                     />
                     </Grid>

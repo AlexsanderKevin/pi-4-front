@@ -35,7 +35,7 @@ export const OverviewTotalCustomers = (props) => {
             }}
           >
             <SvgIcon>
-              <UsersIcon />
+              <ArrowDownIcon />
             </SvgIcon>
           </Avatar>
         </Stack>

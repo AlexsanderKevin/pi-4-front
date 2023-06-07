@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom'
 const MovimentacaoTable = ({equipamentoId}) => {
   const { movimentacoes, fetchMovimentacoes, loading } = useContext(MovimenacaoContext)
 
-  useState(() => fetchMovimentacoes(equipamentoId), [])
+  useState(() => fetchMovimentacoes(equipamentoId), [fetchMovimentacoes])
 
   return (
     <section className={styles.section}>
       <header className={styles.header}>
         <Title>Histórico</Title>
-        <Link to={'/'} className='button-default'><i className='pi pi-sort-alt' ></i></Link>
+        <Link to={`/movimentacoes/${equipamentoId}/new`} className='button-default'><i className='pi pi-sort-alt' ></i></Link>
       </header>
       <table className={styles.table}>
         <thead>
@@ -31,8 +31,8 @@ const MovimentacaoTable = ({equipamentoId}) => {
           { !loading ? 
             movimentacoes.map(movimentacao => (
             <tr key={movimentacao.id_movimentacao}>
-              <td>{movimentacao.createdAt}</td>
-              <td>{movimentacao.zona?.descricao}</td>
+              <td>{movimentacao.createdAt.substring(0, 10)}</td>
+              <td>{movimentacao.status}</td>
               <td>{movimentacao.responsavel?.nome}</td>
               <td>{movimentacao.zona?.nome}</td>
               <td>{movimentacao.quantidade}</td>
