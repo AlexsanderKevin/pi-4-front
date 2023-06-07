@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Teste from './components/Pages/Teste/Teste';
 import Home from './components/Pages/Home/Home';
+import Dashboard from './components/Pages/Dashboard/Dashboard'
 import Config from './components/Pages/Config/Config';
 import EquipmentForm from './components/Pages/EquipmentForm/EquipmentForm';
 import Login from './components/Pages/Login/Login';
@@ -32,6 +33,8 @@ function App() {
             />
 
             <Route path='/' element={ <Home/> } />
+
+            <Route path='/dashboard' element={ <Dashboard/> } />
 
             <Route path='/config' element={ 
               <ProtectedRoute> 

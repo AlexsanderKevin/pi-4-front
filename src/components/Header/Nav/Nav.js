@@ -19,6 +19,7 @@ const Nav = () => {
       { loggedUser ? (
         <>
           <NavLink to={'/'}>Home</NavLink>
+          <NavLink to={'/Dashboard'}>Dashboard</NavLink>
           <NavLink to={'/config'}>Configurações</NavLink>
           { loggedUser.cargo === 'admin' && <NavLink to={'/responsaveis'}>Responsáveis</NavLink> }
           <button 
