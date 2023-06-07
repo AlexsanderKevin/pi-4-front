@@ -10,9 +10,9 @@ import { useContext, useEffect, useState } from 'react'
 const now = new Date()
 
 const Dashboard = () => { 
-    const [ movimentacoes, setMovimentacoes ] = useState([])
     const [ total_entradas, setTotalEntradas ] = useState('')
     const [ total_saidas, setTotalSaidas ] = useState('')
+    const [ total_saidas_mp, setTotalSaidasMP ] = useState('')
     var [ total_meses ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     var [ total_meses_ap ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
@@ -22,11 +22,11 @@ const Dashboard = () => {
         .then(json => {
             var i = 0
 
-            setMovimentacoes(json)
-            setTotalEntradas(json.filter(function(value) { return ((value.data_saida === null || value.status.toString().toUpperCase() === 'FINALIZADO') && 
+            setTotalEntradas(json.filter(function(value) { return (new Date (value.data_entrada).getMonth() === now.getMonth() ) }).length)
+            setTotalSaidas(json.filter(function(value) { return ((value.data_saida !== null || value.status.toString().toUpperCase() === 'FINALIZADO') && 
                             new Date (value.data_entrada).getMonth() === now.getMonth() ) }).length)
-            setTotalSaidas(json.filter(function(value) { return ((value.data_saida !== null) && 
-                            new Date (value.data_entrada).getMonth() === now.getMonth() ) }).length)
+            setTotalSaidasMP(json.filter(function(value) { return ((value.data_saida !== null || value.status.toString().toUpperCase() === 'FINALIZADO') && 
+                                new Date (value.data_entrada).getMonth() === (now.getMonth() - 1)) }).length)
             for (i = 0; i < 12; i++){
                 total_meses[i] = json.filter(function(value) {return (new Date(value.data_entrada).getMonth() === i)}).length
             }
@@ -46,6 +46,11 @@ const Dashboard = () => {
 
     useEffect(() => fetchMovimentacoesByYear(now.getFullYear()), [now.getFullYear()])
     useEffect(() => fetchMovimentacoesByLastYear(now.getFullYear() - 1), [now.getFullYear() - 1])
+
+    console.log(((100 * total_saidas) / total_saidas_mp))
+    console.log(total_saidas)
+    console.log(total_saidas_mp)
+    console.log(now.getMonth())
 
     return(
         <>
@@ -68,6 +73,8 @@ const Dashboard = () => {
                     lg={3}
                     >
                     <OverviewBudget
+                        difference={((100 * total_entradas) / total_meses[now.getMonth() - 1])}
+                        positive={((100 * total_entradas) / total_meses[now.getMonth() - 1]) > 100}
                         sx={{ height: '100%' }}
                         value={total_entradas.toString()}
                     />
@@ -78,6 +85,8 @@ const Dashboard = () => {
                     lg={3}
                     >
                     <OverviewTotalCustomers
+                        difference={((100 * total_saidas) / total_saidas_mp)}
+                        positive={((100 * total_saidas) / total_saidas_mp) > 100}
                         sx={{ height: '100%' }}
                         value={total_saidas.toString()}
                     />
