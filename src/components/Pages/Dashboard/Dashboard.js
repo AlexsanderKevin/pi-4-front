@@ -5,7 +5,7 @@ import { OverviewSales } from './overview/overview-sales'
 import { OverviewTasksProgress } from './overview/overview-tasks-progress'
 import { OverviewTotalCustomers } from './overview/overview-total-customers'
 import { OverviewTraffic } from './overview/overview-traffic'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const now = new Date()
 
