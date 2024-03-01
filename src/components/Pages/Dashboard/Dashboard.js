@@ -17,7 +17,7 @@ const Dashboard = () => {
     var [ total_meses_ap ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
     const fetchMovimentacoesByYear = year => {
-        fetch(`http://35.198.52.93/movimentacoes/dashboard/${year}`)
+        fetch(`${process.env.REACT_APP_API_URL}/movimentacoes/dashboard/${year}`)
         .then(res => res.json())
         .then(json => {
             var i = 0
@@ -34,7 +34,7 @@ const Dashboard = () => {
     }
 
     const fetchMovimentacoesByLastYear = year => {
-        fetch(`http://35.198.52.93/movimentacoes/dashboard/${year}`)
+        fetch(`${process.env.REACT_APP_API_URL}/movimentacoes/dashboard/${year}`)
         .then(res => res.json())
         .then(json => {
             var i = 0

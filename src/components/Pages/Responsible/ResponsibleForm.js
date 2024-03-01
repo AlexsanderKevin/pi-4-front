@@ -18,7 +18,7 @@ const ResponsibleForm = () => {
   const [ senha, setSenha ] = useState('')
 
   const postResponsible = (body) => {
-    fetch(`http://35.198.52.93/responsaveis`, {
+    fetch(`${process.env.REACT_APP_API_URL}/responsaveis`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body)

@@ -10,7 +10,7 @@ const ResponsibleTable = () => {
 
   const fetchResponsibles = () => {
     setLoading(true)
-    fetch('http://35.198.52.93/responsaveis/')
+    fetch(process.env.REACT_APP_API_URL + 'responsaveis/')
     .then(res => res.json())
     .then(json => {
         setResponsibles(json)

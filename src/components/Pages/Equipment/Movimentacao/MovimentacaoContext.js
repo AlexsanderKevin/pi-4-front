@@ -8,7 +8,7 @@ export const MovimentacaoStorage = ({children}) => {
 
   const fetchMovimentacoes = id => {
     setLoading(true)
-    fetch(`http://35.198.52.93/movimentacoes/equipamentos/${id}`)
+    fetch(`${process.env.REACT_APP_API_URL}/movimentacoes/equipamentos/${id}`)
     .then(response => response.json())
     .then(json => {
       setLoading(false)

@@ -7,7 +7,7 @@ const ActionContainer = ({ handleEdit, target_id, targetTable, fetchFunction }) 
 
   const handleDelete = () => {
     setLoading(true)
-    fetch(`http://35.198.52.93/${targetTable}/${target_id}`, {method: 'DELETE'})
+    fetch(`${process.env.REACT_APP_API_URL}/${targetTable}/${target_id}`, {method: 'DELETE'})
     .then(fetchFunction)
   }
 

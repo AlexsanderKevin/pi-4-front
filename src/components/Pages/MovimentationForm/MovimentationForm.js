@@ -33,7 +33,7 @@ const MovimentationForm = () => {
       observacao
     }
 
-    fetch('http://35.198.52.93/movimentacoes', {
+    fetch(process.env.REACT_APP_API_URL + 'movimentacoes', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body)

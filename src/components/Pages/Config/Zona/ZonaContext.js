@@ -9,7 +9,7 @@ export const ZonaStorage = ({children}) => {
 
   const fetchZonas = () => {
     setLoading(true)
-    fetch('http://35.198.52.93/zonas')
+    fetch(process.env.REACT_APP_API_URL + 'zonas')
     .then(res => res.json())
     .then(json => {
       setZonas(json)

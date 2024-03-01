@@ -26,7 +26,7 @@ const TipoModal = () => {
     setLoading(true)
     const body = {nome}
 
-    fetch(`http://35.198.52.93/tipos/${editTarget?.id_tipo}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/tipos/${editTarget?.id_tipo}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body)

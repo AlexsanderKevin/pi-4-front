@@ -29,7 +29,7 @@ const ZonaModal = () => {
     setLoading(true)
     const body = { nome, descricao }
 
-    fetch(`http://35.198.52.93/zonas/${editTarget?.id_zona}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/zonas/${editTarget?.id_zona}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body)

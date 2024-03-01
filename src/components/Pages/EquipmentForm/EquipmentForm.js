@@ -24,7 +24,7 @@ const EquipmentForm = () => {
   const [ descricao, setDescricao ] = useState('')
 
   const fetchEquipment = (equipamentoId) => {
-    fetch(`http://35.198.52.93/equipamentos/${equipamentoId}`)
+    fetch(`${process.env.REACT_APP_API_URL}/equipamentos/${equipamentoId}`)
     .then(res => res.json())
     .then(json => {
       setEditTarget(json)
@@ -40,7 +40,7 @@ const EquipmentForm = () => {
   useEffect(() => {if (id) fetchEquipment(id)}, [id])
 
   const postEquipment = (body, targetId) => {
-    const url = `http://35.198.52.93/equipamentos${targetId ? `/${targetId}` : ''}`
+    const url = `${process.env.REACT_APP_API_URL}/equipamentos${targetId ? `/${targetId}` : ''}`
     fetch( url, {
       method: targetId ? 'PUT' : 'POST',
       headers: {'Content-Type': 'application/json'},

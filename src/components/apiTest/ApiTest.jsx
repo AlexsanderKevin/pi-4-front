@@ -5,7 +5,7 @@ const ApiTest = () => {
   const [ tipos, setTipos ] = useState(null)
 
   const fetchTipos = async () => {
-    const response = await fetch('http://35.198.52.93/tipos')
+    const response = await fetch(process.env.REACT_APP_API_URL + 'tipos')
     const json = await response.json()
     setTipos(json)
     setCarregando(false)
