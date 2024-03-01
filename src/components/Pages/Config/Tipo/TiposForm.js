@@ -15,7 +15,7 @@ const TiposForm = () => {
     setLoading(true)
     const body = {nome}
 
-    fetch(process.env.REACT_APP_API_URL + 'tipos', {
+    fetch(process.env.REACT_APP_API_URL + '/tipos', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body)

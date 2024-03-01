@@ -8,7 +8,7 @@ export const EquipmentStorage = ({children}) => {
 
   const fetchEquipamentos = () => {
     setLoading(true)
-    fetch(process.env.REACT_APP_API_URL + 'equipamentos')
+    fetch(process.env.REACT_APP_API_URL + '/equipamentos')
       .then(res => res.json())
       .then(json => {
         setEquipamentos(json)

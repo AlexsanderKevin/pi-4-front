@@ -9,7 +9,7 @@ export const TipoStorage = ({children}) => {
 
   const fetchTipos = () => {
     setLoading(true)
-    fetch(process.env.REACT_APP_API_URL + 'tipos')
+    fetch(process.env.REACT_APP_API_URL + '/tipos')
     .then(res => res.json())
     .then(json => {
       setTipos(json)

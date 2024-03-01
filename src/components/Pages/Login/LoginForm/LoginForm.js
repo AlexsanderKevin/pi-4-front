@@ -16,7 +16,7 @@ const LoginForm = () => {
   const { setLoggedUser } = useContext(GlobalContext)
 
   const fetchUsers = () => {
-    fetch(process.env.REACT_APP_API_URL + 'responsaveis')
+    fetch(process.env.REACT_APP_API_URL + '/responsaveis')
     .then(res => res.json())
     .then(json => {
       setUserList(json)

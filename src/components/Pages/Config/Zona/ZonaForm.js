@@ -18,7 +18,7 @@ const ZonaForm = () => {
     setLoading(true)
     const body = {nome, descricao}
 
-    fetch(process.env.REACT_APP_API_URL + 'zonas', {
+    fetch(process.env.REACT_APP_API_URL + '/zonas', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body)
