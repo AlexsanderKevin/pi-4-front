@@ -6,6 +6,7 @@ import FormContainer from '../../../Forms/Containers/FormContainer'
 import BtnReset from '../../../Forms/Buttons/BtnReset'
 import BtnSalvar from '../../../Forms/Buttons/BtnSalvar'
 import { ZonaContext } from './ZonaContext'
+import api from '../../../../services/api'
 
 const ZonaForm = () => {
   const [ nome, setNome ] = useState('')
@@ -18,16 +19,13 @@ const ZonaForm = () => {
     setLoading(true)
     const body = {nome, descricao}
 
-    fetch('http://35.198.52.93/zonas', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(body)
-    })
-    .then(() => {
-      fetchZonas()
-      setLoading(false)
-      setActive(false)
-    })
+    api.post('/zonas', body)
+      .then(() => {
+        fetchZonas()
+        setLoading(false)
+        setActive(false)
+      })
+      .catch(err => console.log(err.message))
   }
 
   return (

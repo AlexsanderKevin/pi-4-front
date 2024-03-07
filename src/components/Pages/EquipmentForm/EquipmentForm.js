@@ -8,6 +8,7 @@ import Title from '../../Title/Title'
 import FormContainer from '../../Forms/Containers/FormContainer'
 import { TipoContext } from '../Config/Tipo/TipoContext'
 import { useNavigate, useParams } from 'react-router-dom'
+import api from '../../../services/api'
 
 const EquipmentForm = () => {
   const { tipos } = useContext(TipoContext)
@@ -24,29 +25,33 @@ const EquipmentForm = () => {
   const [ descricao, setDescricao ] = useState('')
 
   const fetchEquipment = (equipamentoId) => {
-    fetch(`http://35.198.52.93/equipamentos/${equipamentoId}`)
-    .then(res => res.json())
-    .then(json => {
-      setEditTarget(json)
-      setNome(json.nome)
-      setCodigo_sap(json.codigo_sap)
-      setTipo(json.id_tipo)
-      setPrioridade(json.prioridade)
-      setUnidade_medida(json.unidade_medida)
-      setDescricao(json.descricao)
-    })
+    api.get(`/equipamentos/${equipamentoId}`)
+      .then(res => {
+        var json = res.data
+        setEditTarget(json)
+        setNome(json.nome)
+        setCodigo_sap(json.codigo_sap)
+        setTipo(json.id_tipo)
+        setPrioridade(json.prioridade)
+        setUnidade_medida(json.unidade_medida)
+        setDescricao(json.descricao)
+      }).catch(err => console.log(err.message))
   }
 
   useEffect(() => {if (id) fetchEquipment(id)}, [id])
 
   const postEquipment = (body, targetId) => {
-    const url = `http://35.198.52.93/equipamentos${targetId ? `/${targetId}` : ''}`
-    fetch( url, {
-      method: targetId ? 'PUT' : 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(body)
-    })
-    .then(() => navigate(targetId ? `/equipamentos/${targetId}` : `/`))
+    if(targetId !== undefined){
+      api.put(`/equipamentos/${targetId}`, body)
+        .then(() => {
+          navigate(`/equipamentos/${targetId}`)
+        })
+        .catch(err => console.log(err.message))
+    } else {
+      api.post('/equipamentos', body)
+        .then(navigate(`/`))
+        .catch(err => console.log(err.message))
+    }
   }
 
   const handleSubmit = event => {

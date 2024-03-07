@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from './ActionContainer.module.css'
+import api from '../../services/api'
 
 const ActionContainer = ({ handleEdit, target_id, targetTable, fetchFunction }) => {
   const [ confirmMode, setConfirmMode ] = useState(false)
@@ -7,8 +8,10 @@ const ActionContainer = ({ handleEdit, target_id, targetTable, fetchFunction }) 
 
   const handleDelete = () => {
     setLoading(true)
-    fetch(`http://35.198.52.93/${targetTable}/${target_id}`, {method: 'DELETE'})
-    .then(fetchFunction)
+
+    api.delete(`${targetTable}/${target_id}`)
+      .then(fetchFunction)
+      .catch(err => console.log(err.message))
   }
 
   return (

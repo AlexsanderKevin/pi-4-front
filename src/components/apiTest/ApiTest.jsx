@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react'
+import api from '../../services/api'
 
 const ApiTest = () => {
   const [ carregando, setCarregando ] = useState(null)
   const [ tipos, setTipos ] = useState(null)
 
   const fetchTipos = async () => {
-    const response = await fetch('http://35.198.52.93/tipos')
-    const json = await response.json()
-    setTipos(json)
-    setCarregando(false)
-    return {response, json}
+    setCarregando(true)
+
+    api.get('/tipos')
+      .then((res) => {
+        setTipos(res.data) 
+        setCarregando(false)
+      }).catch((error) => {console.log(error.message)})
   }
 
   const handleClick = () => {
-    setCarregando(true)
     fetchTipos()
   }
 

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import api from '../../../../services/api'
 
 export const ZonaContext = createContext()
 
@@ -9,12 +10,12 @@ export const ZonaStorage = ({children}) => {
 
   const fetchZonas = () => {
     setLoading(true)
-    fetch('http://35.198.52.93/zonas')
-    .then(res => res.json())
-    .then(json => {
-      setZonas(json)
-      setLoading(false)
-    })
+
+    api.get('/zonas')
+      .then((res) => {
+        setZonas(res.data) 
+        setLoading(false)
+      }).catch((error) => {console.log(error.message)})
   }
 
   useEffect(fetchZonas, [])

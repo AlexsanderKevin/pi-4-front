@@ -9,6 +9,7 @@ import BtnVoltar from '../../Forms/Buttons/BtnVoltar'
 import BtnSalvar from '../../Forms/Buttons/BtnSalvar'
 import { useNavigate, useNavigation, useParams } from 'react-router-dom'
 import { GlobalContext } from '../../../GlobalContext'
+import api from '../../../services/api'
 
 const MovimentationForm = () => {
   const [ status, setStatus ] = useState('')
@@ -33,12 +34,9 @@ const MovimentationForm = () => {
       observacao
     }
 
-    fetch('http://35.198.52.93/movimentacoes', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(body)
-    })
-    .then(() => navigate(`/equipamentos/${id_equipamento}`))
+    api.post('/movimentacoes', body)
+      .then(navigate(`/equipamentos/${id_equipamento}`))
+      .catch(err => console.log(err.message))
   }
 
   return (

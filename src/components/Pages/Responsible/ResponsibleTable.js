@@ -3,6 +3,7 @@ import Title from '../../Title/Title'
 import styles from './ResponsibleTable.module.css'
 import { useEffect, useState } from 'react'
 import Loading from '../../Helper/Loading'
+import api from '../../../services/api'
 
 const ResponsibleTable = () => {
   const [ responsibles, setResponsibles ] = useState([])
@@ -10,12 +11,13 @@ const ResponsibleTable = () => {
 
   const fetchResponsibles = () => {
     setLoading(true)
-    fetch('http://35.198.52.93/responsaveis/')
-    .then(res => res.json())
-    .then(json => {
-        setResponsibles(json)
+
+    api.get('/responsaveis')
+      .then(res => {
+        setResponsibles(res.data)
         setLoading(false)
       })
+      .catch(err => console.log(err.message))
   }
 
   useEffect(fetchResponsibles, [])

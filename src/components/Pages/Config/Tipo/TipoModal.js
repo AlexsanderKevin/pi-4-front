@@ -5,6 +5,7 @@ import FormContainer from '../../../Forms/Containers/FormContainer'
 import BtnVoltar from '../../../Forms/Buttons/BtnVoltar'
 import BtnSalvar from '../../../Forms/Buttons/BtnSalvar'
 import { TipoContext } from './TipoContext'
+import api from '../../../../services/api'
 
 const TipoModal = () => {
   const {
@@ -26,15 +27,11 @@ const TipoModal = () => {
     setLoading(true)
     const body = {nome}
 
-    fetch(`http://35.198.52.93/tipos/${editTarget?.id_tipo}`, {
-      method: 'PUT',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(body)
-    }
-    ).then(() => {
-      fetchTipos()
-      setEditTarget(null)
-    })
+    api.put(`/tipos/${editTarget?.id_tipo}`, body)
+      .then(() => {
+        fetchTipos()
+        setEditTarget(null)
+      }).catch(err => console.log(err.message))
   }
 
   return (

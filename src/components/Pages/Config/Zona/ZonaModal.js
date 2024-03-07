@@ -6,6 +6,7 @@ import FormContainer from "../../../Forms/Containers/FormContainer"
 import BtnVoltar from "../../../Forms/Buttons/BtnVoltar"
 import BtnSalvar from "../../../Forms/Buttons/BtnSalvar"
 import Textarea from "../../../Forms/Inputs/Textarea"
+import api from '../../../../services/api'
 
 const ZonaModal = () => {
   const { 
@@ -29,15 +30,11 @@ const ZonaModal = () => {
     setLoading(true)
     const body = { nome, descricao }
 
-    fetch(`http://35.198.52.93/zonas/${editTarget?.id_zona}`, {
-      method: 'PUT',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(body)
-    }
-    ).then(() => {
-      fetchZonas()
-      setEditTarget(null)
-    })
+    api.put(`/zonas/${editTarget?.id_zona}`, body)
+      .then(() => {
+        fetchZonas()
+        setEditTarget(null)
+      }).catch(err => console.log(err.message))
   }
 
   return (

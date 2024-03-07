@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react'
+import api from '../../../../services/api'
 
 export const MovimenacaoContext = createContext()
 
@@ -8,12 +9,12 @@ export const MovimentacaoStorage = ({children}) => {
 
   const fetchMovimentacoes = id => {
     setLoading(true)
-    fetch(`http://35.198.52.93/movimentacoes/equipamentos/${id}`)
-    .then(response => response.json())
-    .then(json => {
+
+    api.get(`/movimentacoes/equipamentos/${id}`)
+    .then(res => {
       setLoading(false)
-      setMovimentacoes(json.reverse())
-    }) 
+      setMovimentacoes(res.data.reverse())
+    }).catch(err => console.log(err.message))
   }
 
   return (

@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
+import api from '../../../../services/api'
 
 export const EquipmentContext = createContext()
 
@@ -8,12 +9,12 @@ export const EquipmentStorage = ({children}) => {
 
   const fetchEquipamentos = () => {
     setLoading(true)
-    fetch('http://35.198.52.93/equipamentos')
-      .then(res => res.json())
-      .then(json => {
-        setEquipamentos(json)
+
+    api.get('/equipamentos')
+      .then((res) => {
+        setEquipamentos(res.data) 
         setLoading(false)
-      })
+      }).catch((error) => {console.log(error.message)})
   }
 
   useEffect(() => fetchEquipamentos(), [])

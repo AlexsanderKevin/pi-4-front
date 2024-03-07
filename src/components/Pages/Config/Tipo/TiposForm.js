@@ -5,6 +5,7 @@ import BtnSalvar from '../../../Forms/Buttons/BtnSalvar'
 import FormContainer from '../../../Forms/Containers/FormContainer'
 import BtnReset from '../../../Forms/Buttons/BtnReset'
 import { TipoContext } from './TipoContext'
+import api from '../../../../services/api'
 
 const TiposForm = () => {
   const [ nome, setNome ] = useState(null)
@@ -15,16 +16,13 @@ const TiposForm = () => {
     setLoading(true)
     const body = {nome}
 
-    fetch('http://35.198.52.93/tipos', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(body)
-    })
-    .then(() => {
-      fetchTipos()
-      setActive(false)
-    })
-    .then(() => setLoading(false))
+    api.post('/tipos', body)
+      .then(() => {
+        fetchTipos()
+        setActive(false)
+        setLoading(false)
+      })
+      .catch(err => console.log(err.message))
   }
 
   return (

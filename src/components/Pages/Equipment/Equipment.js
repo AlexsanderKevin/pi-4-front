@@ -4,6 +4,7 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import MovimentacaoTable from './Movimentacao/MovimentacaoTable'
 import { MovimentacaoStorage } from './Movimentacao/MovimentacaoContext'
 import ConfirmationModal from '../../Modal/ConfirmationModal'
+import api from '../../../services/api'
 
 const Equipment = () => {
   const [ equipamento, setEquipamento ] = useState({})
@@ -13,15 +14,14 @@ const Equipment = () => {
   const navigate = useNavigate()
 
   const fetchEquipamento = targetId => {
-    fetch(`http://35.198.52.93/equipamentos/${targetId}`)
-    .then(res => res.json())
-    .then(json => {
-      setEquipamento(json)
-    })
+    api.get(`/equipamentos/${targetId}`)
+      .then(res => setEquipamento(res.data))
+      .catch(err => console.log(err.message))
   }
 
   const deleteEquipamento = () => {
-    fetch(`http://35.198.52.93/equipamentos/${id}`, {method: 'DELETE'})
+    api.delete(`/equipamentos/${id}`)
+      .catch(err => console.log(err.message))
   }
 
   useEffect(() => fetchEquipamento(id), [id])

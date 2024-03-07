@@ -5,41 +5,48 @@ import FormContainer from '../../../Forms/Containers/FormContainer'
 import styles from './LoginForm.module.css'
 import { useNavigate } from 'react-router-dom'
 import { GlobalContext } from '../../../../GlobalContext'
+import api from '../../../../services/api'
+import { setAuthToken } from '../../../Helper/setAuthToken'
+import criptografar from '../../../Helper/rsa'
 
 const LoginForm = () => {
   const [ user, setUser ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ error, setError ] = useState(null)
-  const [ userList, setUserList ] = useState([])
 
   const navigate = useNavigate()
   const { setLoggedUser } = useContext(GlobalContext)
 
-  const fetchUsers = () => {
-    fetch('http://35.198.52.93/responsaveis')
-    .then(res => res.json())
-    .then(json => {
-      setUserList(json)
-    })
-  }
+  const fetchUser = (body) => {
+    api.post('/login',{
+      data: body
+    }).then(async res => {
+      let { token, responsavel } = res.data
+      
+      localStorage.setItem('token', token)
+      setAuthToken(token)
+      setLoggedUser(responsavel)
 
-  useEffect(fetchUsers, [])
+      navigate('/')
+    }).catch(e => {
+      const { message } = e.response.data
+      if (message) {
+        setError(`${message}`)
+      }else {
+        setError(`${e}`)
+      }
+    });
+  }
 
   const handleSubmit = event => {
     event.preventDefault()
 
-    let targetUser = userList.filter( item => {
-      if (item.login === user && item.senha === password)
-      return item
-    })
-
-    if (targetUser[0]) {
-      setLoggedUser(targetUser[0])
-      navigate('/')
-
-    } else {
-      setError('Usuário ou senha inválidos')
+    const body = {
+      login: user,
+      senha: criptografar(password)
     }
+
+    fetchUser(body)
   }
 
   return (

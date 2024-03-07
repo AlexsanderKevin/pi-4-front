@@ -6,6 +6,7 @@ import Title from '../../Title/Title'
 import FormContainer from '../../Forms/Containers/FormContainer'
 import { useNavigate } from 'react-router-dom'
 import Select from '../../Forms/Inputs/Select'
+import api from '../../../services/api'
 
 const ResponsibleForm = () => {
   const navigate = useNavigate()
@@ -18,12 +19,9 @@ const ResponsibleForm = () => {
   const [ senha, setSenha ] = useState('')
 
   const postResponsible = (body) => {
-    fetch(`http://35.198.52.93/responsaveis`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(body)
-    })
-    .then(navigate('/responsaveis'))
+    api.post('/responsaveis', body)
+      .then(navigate('/responsaveis'))
+      .catch(err => console.log(err.message))
   }
 
   const handleSubmit = event => {

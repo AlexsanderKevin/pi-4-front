@@ -6,6 +6,7 @@ import { OverviewTasksProgress } from './overview/overview-tasks-progress'
 import { OverviewTotalCustomers } from './overview/overview-total-customers'
 import { OverviewTraffic } from './overview/overview-traffic'
 import { useEffect, useState } from 'react'
+import api from '../../../services/api'
 
 const now = new Date()
 
@@ -17,12 +18,12 @@ const Dashboard = () => {
     var [ total_meses_ap ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
     const fetchMovimentacoesByYear = year => {
-        fetch(`http://35.198.52.93/movimentacoes/dashboard/${year}`)
-        .then(res => res.json())
-        .then(json => {
+        api.get(`/movimentacoes/dashboard/${year}`)
+        .then(res => {
             var i = 0
+            var json = res.data
 
-            setTotalEntradas(json.filter(function(value) { return (new Date (value.data_entrada).getMonth() === now.getMonth() ) }).length)
+            setTotalEntradas(json.filter(function(value) { return (new Date (value.data_entrada).getMonth() === now.getMonth() && value.status.toString().toUpperCase() !== 'FINALIZADO' ) }).length)
             setTotalSaidas(json.filter(function(value) { return ((value.data_saida !== null || value.status.toString().toUpperCase() === 'FINALIZADO') && 
                             new Date (value.data_entrada).getMonth() === now.getMonth() ) }).length)
             setTotalSaidasMP(json.filter(function(value) { return ((value.data_saida !== null || value.status.toString().toUpperCase() === 'FINALIZADO') && 
@@ -31,17 +32,19 @@ const Dashboard = () => {
                 total_meses[i] = json.filter(function(value) {return (new Date(value.data_entrada).getMonth() === i)}).length
             }
         })
+        .catch(err => console.log(err.message))
     }
 
     const fetchMovimentacoesByLastYear = year => {
-        fetch(`http://35.198.52.93/movimentacoes/dashboard/${year}`)
-        .then(res => res.json())
-        .then(json => {
+        api.get(`/movimentacoes/dashboard/${year}`)
+        .then(res => {
+            var json = res.data
             var i = 0
             for (i = 0; i < 12; i++){
                 total_meses_ap[i] = json.filter(function(value) {return (new Date(value.data_entrada).getMonth() === i)}).length
-            }
+            }            
         })
+        .catch(err => console.log(err.message))
     }
 
     useEffect(() => fetchMovimentacoesByYear(now.getFullYear()), [now.getFullYear()])
