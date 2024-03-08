@@ -3,16 +3,15 @@ import styles from './Nav.module.css'
 import { GlobalContext } from "../../../GlobalContext"
 import { useContext } from "react"
 import { useTranslation } from 'react-i18next';
-import LanguageSwitch from "../../LanguageSwitch/LanguageSwitch";
 
 const Nav = () => {
   const { loggedUser, setLoggedUser } = useContext(GlobalContext)
   const navigate = useNavigate()
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   const handleLogout = () => {
     setLoggedUser(null)
-    setAuthToken(null)
+    // setAuthToken(null)
     localStorage.removeItem('token')
     navigate('/login')
   }
