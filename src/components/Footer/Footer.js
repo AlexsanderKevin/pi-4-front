@@ -1,9 +1,12 @@
-import React from 'react'
+import React  from 'react'
 import styles from './Footer.module.css'
+import { useTranslation } from 'react-i18next'
 
 const Footer = () => {
+  const { t } = useTranslation()
+
   return (
-    <footer className={styles.footer}>P.I 4° Semestre - 2023</footer>
+    <footer className={styles.footer}>{t("P.I 6th Period - 2024")}</footer>
   )
 }
 

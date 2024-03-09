@@ -2,9 +2,10 @@ const translation = {
   translation: {
     "Equipment": "Equipamento",
     "Equipments": "Equipamentos",
-    "Logout": "Sair",
-    "Login": "Entrar",
     "English": "Inglês",
+    "Login": "Entrar",
+    "Logout": "Sair",
+    "P.I 6th Period - 2024":"P.I 6° Semestre - 2024",
     "Portuguese": "Português",
   }
 }
