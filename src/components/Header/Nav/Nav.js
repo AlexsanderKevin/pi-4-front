@@ -3,6 +3,7 @@ import styles from './Nav.module.css'
 import { GlobalContext } from "../../../GlobalContext"
 import { useContext } from "react"
 import { useTranslation } from 'react-i18next';
+import LanguageSwitch from "../../LanguageSwitch/LanguageSwitch";
 
 const Nav = () => {
   const { loggedUser, setLoggedUser } = useContext(GlobalContext)
@@ -22,10 +23,11 @@ const Nav = () => {
     <nav className={styles.nav}>
       { loggedUser ? (
         <>
-          <NavLink to={'/'}>Home</NavLink>
-          <NavLink to={'/Dashboard'}>Dashboard</NavLink>
-          <NavLink to={'/config'}>Configurações</NavLink>
-          { loggedUser.cargo === 'admin' && <NavLink to={'/responsaveis'}>Responsáveis</NavLink> }
+          <NavLink to={'/'}>{t('Home')}</NavLink>
+          <NavLink to={'/Dashboard'}>{t('Dashboard')}</NavLink>
+          <NavLink to={'/config'}>{t('Configurations')}</NavLink>
+          { loggedUser?.cargo === 'admin' && <NavLink to={'/responsaveis'}>{t('Responsibles')}</NavLink> }
+          <LanguageSwitch/>
           <button 
             className={`button-default ${styles.logout}`}
             onClick={handleLogout}
@@ -33,6 +35,7 @@ const Nav = () => {
         </>
       ) : (
         <>
+          <LanguageSwitch/>
           <button 
             className={`button-default ${styles.logout}`}
             onClick={handleLogin}

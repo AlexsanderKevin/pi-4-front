@@ -1,9 +1,12 @@
 const translation = {
   translation: {
+    "Configurations": "Configurações",
+    "Dashboard": "Painel",
     "Description": "Descrição",
     "Equipment": "Equipamento",
     "Equipments": "Equipamentos",
     "English": "Inglês",
+    "Home": "Inicio",
     "ID": "ID",
     "Login": "Entrar",
     "Logout": "Sair",
