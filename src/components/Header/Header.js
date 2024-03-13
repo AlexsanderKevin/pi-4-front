@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styles from './Header.module.css'
 import logo from '../../assets/img/logo.png'
 import Nav from './Nav/Nav'
-import { GlobalContext, GlobalStorage } from '../../GlobalContext'
+import { GlobalContext } from '../../GlobalContext'
 import { Link } from 'react-router-dom'
 
 const Header = () => {

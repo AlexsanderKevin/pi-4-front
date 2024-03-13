@@ -4,8 +4,10 @@ import '../../../Table/Table.css'
 import { EquipmentContext } from './EquipmentContext'
 import Loading from '../../../Helper/Loading'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const EquipmentTable = () => {
+  const { t } = useTranslation()
   const { equipamentos, loading } = useContext(EquipmentContext)
   const navigate = useNavigate()
 
@@ -17,11 +19,11 @@ const EquipmentTable = () => {
       <table className={`table ${styles.equipTable}`}>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Tipo</th>
-            <th>Prioridade</th>
-            <th>Descrição</th>
+            <th>{t('ID')}</th>
+            <th>{t('Name')}</th>
+            <th>{t('Type')}</th>
+            <th>{t('Priority')}</th>
+            <th>{t('Description')}</th>
           </tr>
         </thead>
         <tbody>
