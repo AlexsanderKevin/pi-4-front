@@ -4,6 +4,7 @@ import { GlobalContext } from "../../../GlobalContext"
 import { useContext } from "react"
 import { useTranslation } from 'react-i18next';
 import LanguageSwitch from "../../LanguageSwitch/LanguageSwitch";
+import { setAuthToken } from "../../Helper/setAuthToken";
 
 const Nav = () => {
   const { loggedUser, setLoggedUser } = useContext(GlobalContext)
@@ -12,7 +13,7 @@ const Nav = () => {
 
   const handleLogout = () => {
     setLoggedUser(null)
-    // setAuthToken(null)
+    setAuthToken(null)
     localStorage.removeItem('token')
     navigate('/login')
   }
