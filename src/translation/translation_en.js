@@ -3,6 +3,7 @@ const translation = {
     "Configurations": "Configurations",
     "Dashboard": "Dashboard",
     "Description": "Description",
+    "Enter": "Enter",
     "Equipment": "Equipment",
     "Equipments": "Equipments",
     "English": "English",
@@ -12,9 +13,11 @@ const translation = {
     "Logout": "Logout",
     "Name": "Name",
     "P.I 6th Period - 2024":"P.I 6th Period - 2024",
+    "Password": "Password",
     "Portuguese": "Portuguese",
     "Priority": "Priority",
     "Type": "Type",
+    "Username": "Username",
   }
 }
 
