@@ -4,8 +4,10 @@ import Loading from '../../../Helper/Loading'
 import ActionContainer from '../../../Table/ActionContainer'
 import TipoModal from './TipoModal'
 import { TipoContext } from './TipoContext'
+import { useTranslation } from 'react-i18next'
 
 const TipoTable = () => {
+  const { t } = useTranslation()
   const { fetchTipos, tipos, loading, setEditTarget } = useContext(TipoContext)
 
   useEffect(fetchTipos, [])
@@ -15,8 +17,8 @@ const TipoTable = () => {
     <table className='table'>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Nome</th>
+          <th>{t('ID')}</th>
+          <th>{t('Name')}</th>
           <th> </th>
         </tr>
       </thead>

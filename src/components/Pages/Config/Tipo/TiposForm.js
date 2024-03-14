@@ -6,8 +6,10 @@ import FormContainer from '../../../Forms/Containers/FormContainer'
 import BtnReset from '../../../Forms/Buttons/BtnReset'
 import { TipoContext } from './TipoContext'
 import api from '../../../../services/api'
+import { useTranslation } from 'react-i18next'
 
 const TiposForm = () => {
+  const { t } = useTranslation()
   const [ nome, setNome ] = useState(null)
   const [ active, setActive ] = useState(false)
   const { fetchTipos, loading, setLoading } = useContext(TipoContext)
@@ -26,12 +28,12 @@ const TiposForm = () => {
   }
 
   return (
-    <ToggleForm title='Tipos' propActive={active} handleSubmit={handleSubmit}>
+    <ToggleForm title={t('Types')} propActive={active} handleSubmit={handleSubmit}>
         <Input 
           type='text' 
-          name='Nome' 
+          name={t('Name')}
           required 
-          placeholder='Periferico' 
+          placeholder={t('Periferic')}
           onChange={({target}) => setNome(target.value)}
         />
         <FormContainer>
