@@ -23,7 +23,7 @@ const Dashboard = () => {
             var i = 0
             var json = res.data
 
-            setTotalEntradas(json.filter(function(value) { return (new Date (value.data_entrada).getMonth() === now.getMonth() && value.status.toString().toUpperCase() !== 'FINALIZADO' ) }).length)
+            setTotalEntradas(json.filter(function(value) { return (new Date (value.data_entrada).getMonth() === now.getMonth() && value.status.toString().toUpperCase() === 'ENTRADA' ) }).length)
             setTotalSaidas(json.filter(function(value) { return ((value.data_saida !== null || value.status.toString().toUpperCase() === 'FINALIZADO') && 
                             new Date (value.data_entrada).getMonth() === now.getMonth() ) }).length)
             setTotalSaidasMP(json.filter(function(value) { return ((value.data_saida !== null || value.status.toString().toUpperCase() === 'FINALIZADO') && 
