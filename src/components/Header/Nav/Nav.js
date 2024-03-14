@@ -14,7 +14,6 @@ const Nav = () => {
   const handleLogout = () => {
     setLoggedUser(null)
     setAuthToken(null)
-    localStorage.removeItem('token')
     navigate('/login')
   }
 

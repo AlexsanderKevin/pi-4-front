@@ -23,7 +23,6 @@ const LoginForm = () => {
     }).then(async res => {
       let { token, responsavel } = res.data
       
-      localStorage.setItem('token', token)
       setAuthToken(token)
       setLoggedUser(responsavel)
 
