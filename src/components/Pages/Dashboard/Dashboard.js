@@ -24,9 +24,9 @@ const Dashboard = () => {
             var json = res.data
 
             setTotalEntradas(json.filter(function(value) { return (new Date (value.data_entrada).getMonth() === now.getMonth() && value.status.toString().toUpperCase() === 'ENTRADA' ) }).length)
-            setTotalSaidas(json.filter(function(value) { return ((value.data_saida !== null || value.status.toString().toUpperCase() === 'FINALIZADO') && 
+            setTotalSaidas(json.filter(function(value) { return ((value.data_saida !== null || value.status.toString().toUpperCase() === 'SAIDA') && 
                             new Date (value.data_entrada).getMonth() === now.getMonth() ) }).length)
-            setTotalSaidasMP(json.filter(function(value) { return ((value.data_saida !== null || value.status.toString().toUpperCase() === 'FINALIZADO') && 
+            setTotalSaidasMP(json.filter(function(value) { return ((value.data_saida !== null || value.status.toString().toUpperCase() === 'SAIDA') && 
                                 new Date (value.data_entrada).getMonth() === (now.getMonth() - 1)) }).length)
             for (i = 0; i < 12; i++){
                 total_meses[i] = json.filter(function(value) {return (new Date(value.data_entrada).getMonth() === i)}).length
