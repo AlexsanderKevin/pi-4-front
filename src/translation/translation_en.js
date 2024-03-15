@@ -1,5 +1,7 @@
 const translation = {
   translation: {
+    "Back": "Back",
+    "Clear": "Clear",
     "Configurations": "Configurations",
     "Dashboard": "Dashboard",
     "Description": "Description",
@@ -18,6 +20,7 @@ const translation = {
     "Periferic": "Periferic",
     "Portuguese": "Portuguese",
     "Priority": "Priority",
+    "Save": "Save",
     "Type": "Type",
     "Types": "Types",
     "Username": "Username",

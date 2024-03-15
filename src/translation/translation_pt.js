@@ -1,5 +1,7 @@
 const translation = {
   translation: {
+    "Back": "Voltar",
+    "Clear": "Limpar",
     "Configurations": "Configurações",
     "Dashboard": "Painel",
     "Description": "Descrição",
@@ -18,6 +20,7 @@ const translation = {
     "Periferic": "Periferico",
     "Portuguese": "Português",
     "Priority": "Prioridade",
+    "Save": "Salvar",
     "Type": "Tipo",
     "Types": "Tipos",
     "Username": "Nome de Usuário",
