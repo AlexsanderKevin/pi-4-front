@@ -6,12 +6,14 @@ const translation = {
     "Dashboard": "Dashboard",
     "Description": "Description",
     "Edit Type": "Edit Type",
+    "Edit Zone": "Edit Zone",
     "Enter": "Enter",
     "Equipment": "Equipment",
     "Equipments": "Equipments",
     "English": "English",
     "Home": "Home",
     "ID": "ID",
+    "Locker XYZ":"Locker XYZ",
     "Login": "Login",
     "Logout": "Logout",
     "Name": "Name",
@@ -24,6 +26,9 @@ const translation = {
     "Type": "Type",
     "Types": "Types",
     "Username": "Username",
+    "Waiting for test": "Waiting for test",
+    "Zone": "Zone",
+    "Zones": "Zones",
   }
 }
 

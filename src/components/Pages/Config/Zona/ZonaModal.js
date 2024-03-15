@@ -7,8 +7,10 @@ import BtnVoltar from "../../../Forms/Buttons/BtnVoltar"
 import BtnSalvar from "../../../Forms/Buttons/BtnSalvar"
 import Textarea from "../../../Forms/Inputs/Textarea"
 import api from '../../../../services/api'
+import { useTranslation } from "react-i18next"
 
 const ZonaModal = () => {
+  const { t } = useTranslation()
   const { 
     editTarget, 
     setEditTarget, 
@@ -38,16 +40,16 @@ const ZonaModal = () => {
   }
 
   return (
-    <Modal title='Editar Zona' active={editTarget}>
+    <Modal title={t('Edit Zone')} active={editTarget}>
       <form style={{marginBottom: '0'}} onSubmit={handleSubmit}>
         <Input
-          name='nome'
+          name={t('Name')}
           value={nome}
           onChange={({target}) => setNome(target.value)}
           required
         />
         <Textarea
-          name='descrição'
+          name={t('Description')}
           value={descricao}
           onChange={({target}) => setDescricao(target.value)}
           required
