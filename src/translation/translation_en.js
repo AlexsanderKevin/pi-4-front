@@ -1,5 +1,6 @@
 const translation = {
   translation: {
+    "Administrator": "Administrator",
     "Are you sure you want to delete this equipment?": "Are you sure you want to delete this equipment?",
     "Attention!": "Attention!",
     "Back": "Back",
@@ -23,6 +24,7 @@ const translation = {
     "Home": "Home",
     "ID": "ID",
     "keyboard": "keyboard",
+    "Laboratory": "Laboratory",
     "Locker XYZ":"Locker XYZ",
     "Login": "Login",
     "Logout": "Logout",
@@ -36,9 +38,11 @@ const translation = {
     "Priority": "Priority",
     "Responsible": "Responsible",
     "Responsibles": "Responsibles",
+    "Responsible registration": "Responsible registration",
     "Role": "Role",
     "SAP Code": "SAP Code",
     "Save": "Save",
+    "Sector": "Sector",
     "Status": "Status",
     "Type": "Type",
     "Types": "Types",
