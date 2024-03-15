@@ -5,8 +5,10 @@ import MovimentacaoTable from './Movimentacao/MovimentacaoTable'
 import { MovimentacaoStorage } from './Movimentacao/MovimentacaoContext'
 import ConfirmationModal from '../../Modal/ConfirmationModal'
 import api from '../../../services/api'
+import { useTranslation } from 'react-i18next'
 
 const Equipment = () => {
+  const { t } = useTranslation()
   const [ equipamento, setEquipamento ] = useState({})
   const [ activeModal, setActiveModal ] = useState(false)
 
@@ -34,7 +36,7 @@ const Equipment = () => {
   return (
     <section className={styles.section}>
       <header className={styles.header}>
-        <label styles={styles.headerLabel}>Detalhes:</label>
+        <label styles={styles.headerLabel}>{t('Details')}:</label>
         <div className={styles.titleContainer}>
 
           <h1 className={styles.title}> {equipamento?.nome} </h1>
@@ -52,21 +54,21 @@ const Equipment = () => {
         </div>
       </header>
       <div className={styles.detailsContainer}>
-        <p className={styles.infoTipo}><strong>Tipo</strong> {equipamento.tipo?.nome}</p>
-        <p className={styles.infoCodSap}><strong>Cod.SAP</strong> {equipamento.codigo_sap}</p>
-        <p className={styles.infoUnidadeMedida}><strong>Unidade de Medida</strong> {equipamento.unidade_medida}</p>
-        <p className={styles.infoDescription}><strong>Descrição</strong> {equipamento.descricao}</p>
+        <p className={styles.infoTipo}><strong>{t('Type')}</strong> {equipamento.tipo?.nome}</p>
+        <p className={styles.infoCodSap}><strong>{t('SAP Code')}</strong> {equipamento.codigo_sap}</p>
+        <p className={styles.infoUnidadeMedida}><strong>{t('Measure unity')}</strong> {equipamento.unidade_medida}</p>
+        <p className={styles.infoDescription}><strong>{t('Description')}</strong> {equipamento.descricao}</p>
       </div>
       <MovimentacaoStorage>
         <MovimentacaoTable equipamentoId={id}/>
       </MovimentacaoStorage>
-      <Link to={'/'} className='button-default'><i className='pi pi-arrow-left'></i>Voltar</Link>
+      <Link to={'/'} className='button-default'><i className='pi pi-arrow-left'></i>{t('Back')}</Link>
 
       <ConfirmationModal 
         active={activeModal} 
         setActive={setActiveModal}
-        title='Atenção!' 
-        message='Tem certeza que deseja deletar esse equipamento?'
+        title={t('Attention!')}
+        message={t('Are you sure you want to delete this equipment?')}
         confirmationFunction={handleDelete}
       />
     </section>

@@ -1,11 +1,14 @@
 const translation = {
   translation: {
+    "Are you sure you want to delete this equipment?": "Are you sure you want to delete this equipment?",
+    "Attention!": "Attention!",
     "Back": "Back",
     "Broken wireless keyboard": "Broken wireless keyboard",
     "Clear": "Clear",
     "Configurations": "Configurations",
     "Dashboard": "Dashboard",
     "Description": "Description",
+    "Details": "Details",
     "Edit": "Edit",
     "Edit Type": "Edit Type",
     "Edit Zone": "Edit Zone",
