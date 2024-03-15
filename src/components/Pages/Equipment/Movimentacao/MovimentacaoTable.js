@@ -4,8 +4,10 @@ import styles from './MovimentacaoTable.module.css'
 import { MovimenacaoContext } from './MovimentacaoContext'
 import Loading from '../../../Helper/Loading'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const MovimentacaoTable = ({equipamentoId}) => {
+  const { t } = useTranslation()
   const { movimentacoes, fetchMovimentacoes, loading } = useContext(MovimenacaoContext)
 
   useState(() => fetchMovimentacoes(equipamentoId), [fetchMovimentacoes])
@@ -13,18 +15,18 @@ const MovimentacaoTable = ({equipamentoId}) => {
   return (
     <section className={styles.section}>
       <header className={styles.header}>
-        <Title>Histórico</Title>
+        <Title>{t('History')}</Title>
         <Link to={`/movimentacoes/${equipamentoId}/new`} className='button-default'><i className='pi pi-sort-alt' ></i></Link>
       </header>
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>Data</th>
-            <th>Status</th>
-            <th>Responsável</th>
-            <th>Zona</th>
-            <th>Qtd</th>
-            <th>Obs</th>
+            <th>{t('Date')}</th>
+            <th>{t('Status')}</th>
+            <th>{t('Responsible')}</th>
+            <th>{t('Zone')}</th>
+            <th>{t('Qtd')}</th>
+            <th>{t('Obs')}</th>
           </tr>
         </thead>
         <tbody>
