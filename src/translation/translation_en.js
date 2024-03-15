@@ -35,6 +35,8 @@ const translation = {
     "Portuguese": "Portuguese",
     "Priority": "Priority",
     "Responsible": "Responsible",
+    "Responsibles": "Responsibles",
+    "Role": "Role",
     "SAP Code": "SAP Code",
     "Save": "Save",
     "Status": "Status",
