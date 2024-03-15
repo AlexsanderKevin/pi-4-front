@@ -7,8 +7,10 @@ import FormContainer from '../../Forms/Containers/FormContainer'
 import { useNavigate } from 'react-router-dom'
 import Select from '../../Forms/Inputs/Select'
 import api from '../../../services/api'
+import { useTranslation } from 'react-i18next'
 
 const ResponsibleForm = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
 
   const [ nome, setNome ] = useState('')
