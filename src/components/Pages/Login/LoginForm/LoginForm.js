@@ -8,8 +8,10 @@ import { GlobalContext } from '../../../../GlobalContext'
 import api from '../../../../services/api'
 import { setAuthToken } from '../../../Helper/setAuthToken'
 import criptografar from '../../../Helper/rsa'
+import { useTranslation } from 'react-i18next'
 
 const LoginForm = () => {
+  const { t } = useTranslation()
   const [ user, setUser ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ error, setError ] = useState(null)
@@ -50,27 +52,27 @@ const LoginForm = () => {
 
   return (
     <div className={`form-page ${styles.form}`}>
-      <Title>Login</Title>
+      <Title>{t('Login')}</Title>
 
       <form onSubmit={handleSubmit}>
         <Input 
           type='text' 
-          placeholder='usuário' 
-          name='Usuario'
+          placeholder={'Fulano Beltrano da Silva'}
+          name={t('Username')}
           value={user}
           onChange={({target}) => setUser(target.value)}
         />
         <Input 
           type='password' 
-          placeholder='senha' 
-          name='Senha'
+          placeholder={'*************'}
+          name={t('Password')}
           value={password}
           onChange={({target}) => setPassword(target.value)}
         />
         { error ? <p className={styles.errorMessage}>{error}</p> : null}
 
         <FormContainer>
-          <button type='submit' className={`button-default ${styles.buttonLogin}`}>Entrar</button>
+          <button type='submit' className={`button-default ${styles.buttonLogin}`}>{t('Enter')}</button>
         </FormContainer>
       </form>
     </div>

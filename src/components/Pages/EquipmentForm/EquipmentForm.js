@@ -9,8 +9,10 @@ import FormContainer from '../../Forms/Containers/FormContainer'
 import { TipoContext } from '../Config/Tipo/TipoContext'
 import { useNavigate, useParams } from 'react-router-dom'
 import api from '../../../services/api'
+import { useTranslation } from 'react-i18next'
 
 const EquipmentForm = () => {
+  const { t } = useTranslation()
   const { tipos } = useContext(TipoContext)
   const navigate = useNavigate()
   const { id } = useParams()
@@ -69,13 +71,13 @@ const EquipmentForm = () => {
 
   return (
     <div className='form-page' >
-      <Title>{ id ? `Editar: ${editTarget?.nome}` : 'Novo Equipamento'}</Title>
+      <Title>{ id ? `${t('Edit')}: ${editTarget?.nome}` : t('New Equipment')}</Title>
 
       <form onSubmit={handleSubmit}>
         <Input 
           type='text'
-          placeholder='Ex.: Teclado' 
-          name='nome' 
+          placeholder={'Ex.: ' + t('keyboard')}
+          name={t('Name')}
           value={nome}
           onChange={({target}) => setNome(target.value)}
           required
@@ -85,14 +87,14 @@ const EquipmentForm = () => {
           <Input 
             type='number' 
             placeholder='Ex.: 123456' 
-            name='Código SAP'
+            name={t('SAP Code')}
             value={codigo_sap}
             onChange={({target}) => setCodigo_sap(target.value)}
             required
           />
 
           <Select 
-            name='tipo'
+            name={t('Type')}
             value={tipo}
             onChange={({target}) => setTipo(target.value)}
           >
@@ -104,7 +106,7 @@ const EquipmentForm = () => {
 
         <FormContainer>
           <Select
-            name='prioridade'
+            name={t('Priority')}
             value={prioridade}
             onChange={({target}) => setPrioridade(target.value)}
           >
@@ -115,16 +117,16 @@ const EquipmentForm = () => {
 
           <Input 
             type='text' 
-            placeholder='Ex.: Unidade' 
-            name='Unidade de medida' 
+            placeholder={'Ex.: ' + t('Unity')}
+            name={t('Measure unity')}
             value={unidade_medida}
             onChange={({target}) => setUnidade_medida(target.value)}
           />
         </FormContainer>
 
         <Textarea 
-          name='Descrição' 
-          placeholder='Ex.: Teclado sem fio com problema'
+          name={t('Description')}
+          placeholder={'Ex.: ' + t('Broken wireless keyboard')}
           value={descricao}
           onChange={({target}) => setDescricao(target.value)}
         />

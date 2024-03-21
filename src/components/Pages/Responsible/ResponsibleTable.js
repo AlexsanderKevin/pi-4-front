@@ -4,8 +4,10 @@ import styles from './ResponsibleTable.module.css'
 import { useEffect, useState } from 'react'
 import Loading from '../../Helper/Loading'
 import api from '../../../services/api'
+import { useTranslation } from 'react-i18next'
 
 const ResponsibleTable = () => {
+  const { t } = useTranslation()
   const [ responsibles, setResponsibles ] = useState([])
   const [ loading, setLoading ] = useState(false)
 
@@ -25,17 +27,17 @@ const ResponsibleTable = () => {
   return (
     <section className={styles.responsibles}>
       <header>
-        <Title>Responsáveis</Title>
+        <Title>{t('Responsibles')}</Title>
         <NavLink to={'/responsaveis/new'} className={`button-default`}><i className='pi pi-plus'></i></NavLink>
       </header>
       <table className={`table ${styles.responsibleTable}`}>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Cargo</th>
-            <th>Usuário</th>
-            <th>Email</th>
+            <th>{t('ID')}</th>
+            <th>{t('Name')}</th>
+            <th>{t('Role')}</th>
+            <th>{t('Username')}</th>
+            <th>{t('Email')}</th>
           </tr>
         </thead>
         <tbody>

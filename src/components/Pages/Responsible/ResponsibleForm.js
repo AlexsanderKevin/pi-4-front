@@ -7,8 +7,10 @@ import FormContainer from '../../Forms/Containers/FormContainer'
 import { useNavigate } from 'react-router-dom'
 import Select from '../../Forms/Inputs/Select'
 import api from '../../../services/api'
+import { useTranslation } from 'react-i18next'
 
 const ResponsibleForm = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
 
   const [ nome, setNome ] = useState('')
@@ -40,12 +42,12 @@ const ResponsibleForm = () => {
 
   return (
     <div className='form-page'>
-       <Title>Cadastro de Responsável</Title>
+       <Title>{t('Responsible registration')}</Title>
       <form onSubmit={handleSubmit}>
         <Input 
           type='text' 
           placeholder='fulano de tal' 
-          name='Nome'
+          name={t('Name')}
           value={nome}
           onChange={({target}) => setNome(target.value)}
         />
@@ -53,18 +55,18 @@ const ResponsibleForm = () => {
           <Select 
             type='text' 
             placeholder='Tecnico Eletronico' 
-            name='Cargo'
+            name={t('Role')}
             value={cargo}
             onChange={({target}) => setCargo(target.value)}
           >
-            <option value='laboratorio'>Laboratorio</option>
-            <option value='admin'>Administrador</option>
+            <option value='laboratorio'>{t('Laboratory')}</option>
+            <option value='admin'>{t('Administrator')}</option>
           </Select>
 
           <Input 
             type='text' 
             placeholder='Manutencao eletronica' 
-            name='Setor'
+            name={t('Sector')}
             value={setor}
             onChange={({target}) => setSetor(target.value)}
           />
@@ -72,7 +74,7 @@ const ResponsibleForm = () => {
         <Input 
           type='text' 
           placeholder='fulanodetal@' 
-          name='Email'
+          name={t('Email')}
           value={email}
           onChange={({target}) => setEmail(target.value)}
         />
@@ -80,14 +82,14 @@ const ResponsibleForm = () => {
           <Input 
             type='text' 
             placeholder='fulano' 
-            name='Login'
+            name={t('Username')}
             value={login}
             onChange={({target}) => setLogin(target.value)}
           />
           <Input 
             type='password' 
             placeholder='***********' 
-            name='Senha'
+            name={t('Password')}
             value={senha}
             onChange={({target}) => setSenha(target.value)}
           />

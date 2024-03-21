@@ -6,8 +6,10 @@ import BtnVoltar from '../../../Forms/Buttons/BtnVoltar'
 import BtnSalvar from '../../../Forms/Buttons/BtnSalvar'
 import { TipoContext } from './TipoContext'
 import api from '../../../../services/api'
+import { useTranslation } from 'react-i18next'
 
 const TipoModal = () => {
+  const { t } = useTranslation()
   const {
     editTarget, 
     setEditTarget, 
@@ -35,10 +37,10 @@ const TipoModal = () => {
   }
 
   return (
-    <Modal title='Editar Tipo' active={editTarget}>
+    <Modal title={t('Edit Type')} active={editTarget}>
       <form style={{marginBottom: '0'}} onSubmit={handleSubmit}>
         <Input 
-          name='nome'
+          name={t('Name')}
           value={nome}
           onChange={({target}) => setNome(target.value)}
           required

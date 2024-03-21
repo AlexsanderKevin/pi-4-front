@@ -31,7 +31,7 @@ const Nav = () => {
           <button 
             className={`button-default ${styles.logout}`}
             onClick={handleLogout}
-          >Sair <i className="pi pi-sign-out" style={{marginLeft: '.5rem'}}></i></button>
+          >{t('Logout')} <i className="pi pi-sign-out" style={{marginLeft: '.5rem'}}></i></button>
         </>
       ) : (
         <>

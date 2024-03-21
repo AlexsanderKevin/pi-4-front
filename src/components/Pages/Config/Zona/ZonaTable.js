@@ -3,8 +3,10 @@ import '../../../Table/Table.css'
 import Loading from '../../../Helper/Loading'
 import ActionContainer from '../../../Table/ActionContainer'
 import { ZonaContext } from './ZonaContext'
+import { useTranslation } from 'react-i18next'
 
 const ZonaTable = () => {
+  const { t } = useTranslation()
   const { fetchZonas, zonas, loading, setEditTarget } = useContext(ZonaContext)
 
   useEffect(fetchZonas, [])
@@ -13,9 +15,9 @@ const ZonaTable = () => {
     <table className='table'>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Descrição</th>
+          <th>{t('ID')}</th>
+          <th>{t('Name')}</th>
+          <th>{t('Description')}</th>
           <th> </th>
         </tr>
       </thead>

@@ -7,8 +7,10 @@ import BtnReset from '../../../Forms/Buttons/BtnReset'
 import BtnSalvar from '../../../Forms/Buttons/BtnSalvar'
 import { ZonaContext } from './ZonaContext'
 import api from '../../../../services/api'
+import { useTranslation } from 'react-i18next'
 
 const ZonaForm = () => {
+  const { t } = useTranslation()
   const [ nome, setNome ] = useState('')
   const [ descricao, setDescricao ] = useState('')
   const [ active, setActive ] = useState(false)
@@ -29,18 +31,18 @@ const ZonaForm = () => {
   }
 
   return (
-    <ToggleForm title='Zonas' propActive={active} handleSubmit={handleSubmit}>
+    <ToggleForm title={t('Zones')} propActive={active} handleSubmit={handleSubmit}>
       <Input
         type='text'
-        name='Nome'
-        placeholder='Armario XYZ'
+        name={t('Name')}
+        placeholder={t('Locker XYZ')}
         required
         onChange={({target}) => setNome(target.value)}
       />
       <Textarea
         type='text'
-        name='Descrição'
-        placeholder='Aguardando Teste'
+        name={t('Description')}
+        placeholder={t('Waiting for test')}
         required
         value={descricao}
         onChange={({target}) => setDescricao(target.value)}
